@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hamat Healthcare - Your Partner in Health</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+    <!-- Custom CSS -->
+    <style>
+      :root {
+        --primary-color: #0065b3;
+        --secondary-color: #00a0e3;
+        --accent-color: #f7941d;
+        --light-gray: #f8f9fa;
+        --dark-gray: #343a40;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: #333;
+      }
+
+      /* Top Navigation */
+      .top-bar {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 8px 0;
+        font-size: 14px;
+      }
+
+      .top-bar i {
+        color: var(--accent-color);
+        margin-right: 5px;
+      }
+
+      /* Main Navigation */
+      .navbar {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 15px 0;
+      }
+
+      .navbar-brand img {
+        max-height: 60px;
+      }
+
+      .navbar-nav .nav-link {
+        color: var(--dark-gray);
+        font-weight: 500;
+        padding: 10px 15px;
+        transition: color 0.3s ease;
+        margin-right: 30px; /* Adjust the value as needed */
+      }
+
+      .navbar-nav .nav-link:hover,
+      .navbar-nav .nav-link.active {
+        color: var(--primary-color);
+      }
+
+      .navbar .btn-appointment {
+        background-color: var(--accent-color);
+        color: white;
+        border-radius: 30px;
+        padding: 8px 20px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .navbar .btn-appointment:hover {
+        background-color: #e68a1c;
+        transform: translateY(-2px);
+      }
+
+      /* Hero Section */
+      .hero-section {
+        position: relative;
+        padding: 120px 0;
+        text-align: center;
+        color: white;
+        overflow: hidden;
+      }
+
+      .hero-section::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url("images/hospital.jpg") center/cover no-repeat;
+        z-index: 0;
+      }
+
+      .hero-section::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          rgba(0, 101, 179, 0.5),
+          rgba(0, 160, 227, 0.5)
+        );
+        z-index: 1;
+      }
+
+      .hero-section .container {
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-section h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+
+      .hero-section p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto 30px;
+      }
+
+      .hero-buttons .btn {
+        padding: 12px 30px;
+        font-weight: 600;
+        border-radius: 30px;
+        margin: 0 10px;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary {
+        background-color: var(--accent-color);
+        border-color: var(--accent-color);
+      }
+
+      .btn-primary:hover {
+        background-color: #e68a1c;
+        border-color: #e68a1c;
+        transform: translateY(-2px);
+      }
+
+      .btn-outline-light:hover {
+        transform: translateY(-2px);
+      }
+
+      /* Services Section */
+      .services-section {
+        padding: 80px 0;
+        background-color: var(--light-gray);
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .section-title h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        position: relative;
+        padding-bottom: 15px;
+        margin-bottom: 20px;
+      }
+
+      .section-title h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: var(--accent-color);
+      }
+
+      .service-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin-bottom: 30px;
+        height: 100%;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .service-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .service-card .card-body {
+        padding: 25px;
+      }
+
+      .service-card h3 {
+        color: var(--primary-color);
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+
+      .service-card p {
+        color: #666;
+        margin-bottom: 20px;
+      }
+
+      .service-card .btn {
+        padding: 8px 20px;
+        font-weight: 500;
+        font-size: 14px;
+        border-radius: 30px;
+      }
+
+      /* About Section */
+      .about-section {
+        padding: 80px 0;
+      }
+
+      .about-image {
+        position: relative;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .about-image img {
+        width: 100%;
+        height: auto;
+      }
+
+      .about-content h2 {
+        color: var(--primary-color);
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 25px;
+        position: relative;
+        padding-bottom: 15px;
+      }
+
+      .about-content h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 80px;
+        height: 3px;
+        background-color: var(--accent-color);
+      }
+
+      .about-content p {
+        color: #666;
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 25px;
+      }
+
+      .feature-item {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 20px;
+      }
+
+      .feature-icon {
+        width: 50px;
+        height: 50px;
+        background-color: rgba(0, 101, 179, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 20px;
+        flex-shrink: 0;
+      }
+
+      .feature-icon i {
+        color: var(--primary-color);
+        font-size: 20px;
+      }
+
+      .feature-text h4 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--dark-gray);
+        margin-bottom: 8px;
+      }
+
+      /* Call to Action */
+      .cta-section {
+        background: linear-gradient(
+            rgba(0, 101, 179, 0.9),
+            rgba(0, 160, 227, 0.9)
+          ),
+          url("/api/placeholder/1600/800") center/cover no-repeat;
+        padding: 80px 0;
+        color: white;
+        text-align: center;
+      }
+
+      .cta-section h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+      }
+
+      .cta-section p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto 30px;
+      }
+
+      /* Doctors Section */
+      .doctors-section {
+        padding: 80px 0;
+        background-color: var(--light-gray);
+      }
+
+      .doctor-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin-bottom: 30px;
+        height: 100%;
+      }
+
+      .doctor-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .doctor-image {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .doctor-image img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .doctor-card:hover .doctor-image img {
+        transform: scale(1.05);
+      }
+
+      .doctor-info {
+        padding: 25px;
+        text-align: center;
+      }
+
+      .doctor-info h3 {
+        color: var(--primary-color);
+        font-size: 1.4rem;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .doctor-info h4 {
+        color: var(--accent-color);
+        font-size: 1rem;
+        font-weight: 500;
+        margin-bottom: 15px;
+      }
+
+      .doctor-info p {
+        color: #666;
+        margin-bottom: 20px;
+      }
+
+      .doctor-social {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .doctor-social a {
+        width: 36px;
+        height: 36px;
+        background-color: rgba(0, 101, 179, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-color);
+        transition: all 0.3s ease;
+      }
+
+      .doctor-social a:hover {
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      /* Testimonials */
+      .testimonials-section {
+        padding: 80px 0;
+      }
+
+      .testimonial-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        position: relative;
+        margin-bottom: 30px;
+        height: 100%;
+      }
+
+      .testimonial-card::before {
+        content: "\201C";
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 60px;
+        color: rgba(0, 101, 179, 0.1);
+        font-family: Georgia, serif;
+      }
+
+      .testimonial-text {
+        font-style: italic;
+        color: #666;
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+        line-height: 1.7;
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+      }
+
+      .testimonial-author img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 15px;
+      }
+
+      .author-info h4 {
+        color: var(--dark-gray);
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .author-info p {
+        color: var(--accent-color);
+        font-size: 0.9rem;
+      }
+
+      /* Footer */
+      .footer {
+        background-color: var(--dark-gray);
+        color: white;
+        padding: 80px 0 0;
+      }
+
+      .footer h4 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 25px;
+        color: white;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer h4::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 2px;
+        background-color: var(--accent-color);
+      }
+
+      .footer-about img {
+        max-width: 200px;
+        margin-bottom: 20px;
+      }
+
+      .footer-about p {
+        margin-bottom: 20px;
+        color: #bbb;
+        line-height: 1.7;
+      }
+
+      .footer-social {
+        display: flex;
+        gap: 10px;
+      }
+
+      .footer-social a {
+        width: 36px;
+        height: 36px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        transition: all 0.3s ease;
+      }
+
+      .footer-social a:hover {
+        background-color: var(--accent-color);
+      }
+
+      .footer-links ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 12px;
+      }
+
+      .footer-links a {
+        color: #bbb;
+        text-decoration: none;
+        transition: color 0.3s ease;
+        display: block;
+      }
+
+      .footer-links a:hover {
+        color: white;
+        padding-left: 5px;
+      }
+
+      .footer-links a i {
+        margin-right: 10px;
+        color: var(--accent-color);
+      }
+
+      .footer-contact p {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 20px;
+        color: #bbb;
+      }
+
+      .footer-contact i {
+        margin-right: 15px;
+        color: var(--accent-color);
+        font-size: 18px;
+        margin-top: 3px;
+      }
+
+      .footer-bottom {
+        background-color: rgba(0, 0, 0, 0.2);
+        padding: 20px 0;
+        margin-top: 60px;
+        text-align: center;
+      }
+
+      .footer-bottom p {
+        margin-bottom: 0;
+        color: #bbb;
+      }
+
+
+
+      /* Floating WhatsApp Button */
+/* WhatsApp Button with Online Indicator */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.whatsapp-button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  overflow: visible;
+  cursor: pointer;
+}
+
+.profile-image-container {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+
+.whatsapp-button-img, .chat-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.online-indicator {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 15px;
+  height: 15px;
+  background-color: #4CAF50;
+  border-radius: 50%;
+  border: 2px solid white;
+  z-index: 10;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* Rest of your existing WhatsApp styles... */
+
+
+/* WhatsApp Services Box */
+.whatsapp-services {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  width: 280px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  padding: 15px;
+  gap: 10px;
+}
+
+/* Text title */
+.whatsapp-services p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Checkbox Style as Pills */
+.whatsapp-services label {
+  display: flex;
+  align-items: center;
+  border: 2px solid #25d366;
+  border-radius: 25px;
+  padding: 10px 15px;
+  color: #25d366;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.whatsapp-services label:hover {
+  background-color: #eafaf1;
+}
+
+.whatsapp-services input[type="checkbox"] {
+  display: none;
+}
+
+.whatsapp-services input[type="checkbox"]:checked + span {
+  background-color: #25d366;
+  color: white;
+  border-radius: 20px;
+  padding: 8px 12px;
+}
+
+/* Confirm Button */
+.whatsapp-services button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #25d366;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.chat-avatar {
+  width: 60px;      /* Same as WhatsApp button */
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 12px;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.chat-bubble {
+  background-color: #f1f1f1;
+  padding: 12px 16px;
+  border-radius: 16px;
+  max-width: 200px;
+  font-size: 14px;
+  line-height: 1.4;
+  position: relative;
+}
+
+.chat-bubble::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: -8px;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid #f1f1f1;
+}
+
+
+
+
+
+    </style>
+  </head>
+  <body>
+    <!-- Top Bar -->
+    <div class="top-bar d-none d-md-block">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <span class="me-3"
+              ><i class="fas fa-phone-alt"></i> Call Us: +254 721 600700</span
+            >
+            <span class="me-3"
+              ><i class="fas fa-envelope"></i> hamathealthcare@gmail.com </span
+            >
+          </div>
+          <div class="col-md-4 text-end">
+            <span
+              ><i class="fas fa-clock"></i> Opening Hours: Mon-Sun 24/7</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="images/Logo.PNG" alt="Hamat Healthcare Logo" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="services.html">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="news.html">News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contacts</a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="medicine.html">Pharmacy</a>
+            </li>
+          </ul>
+          <a href="#" class="btn btn-appointment ms-3">Book Appointment</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <h1>Your Health is Our Priority</h1>
+            <p>
+              Hamat Healthcare offers specialized and comprehensive medical
+              care to meet your needs. Our team of experienced medical
+              professionals is dedicated to providing high-quality care.
+            </p>
+            <div class="hero-buttons">
+              <a href="#" class="btn btn-primary">Book Appointment</a>
+              <a href="services.html" class="btn btn-outline-light"
+                >Our Services</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Our Services</h2>
+          <p>
+            We provide comprehensive medical care with a focus on quality and
+            patient comfort
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="service-card">
+              <img src="images/lab.jpg" alt="General Medicine" />
+              <div class="card-body">
+                <h3>Laboratory</h3>
+                <p>
+                  Our laboratory is dedicated to providing fast, accurate
+                  diagnostic testing to support your healthcare needs.
+                </p>
+                <a href="services.html" class="btn btn-outline-primary"
+                  >Learn More</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="service-card">
+              <img src="images/Sha.jpg" alt="Home-Based Nursing" />
+              <div class="card-body">
+                <h3>Operation Theatre</h3>
+                <p>
+                  Our operation theatre is designed to provide safe, efficient,
+                  and high-quality surgical care.
+                </p>
+                <a href="services.html" class="btn btn-outline-primary"
+                  >Learn More</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="service-card">
+              <img
+                src="images/geriatic care.jpeg"
+                alt="Physiotherapy Services"
+              />
+              <div class="card-body">
+                <h3>Geriatric Care</h3>
+                <p>
+                  Our Geriatric Care services are focused on providing
+                  specialized attention and support for the elderly in the
+                  comfort of their own homes.
+                </p>
+                <a href="services.html" class="btn btn-outline-primary"
+                  >Learn More</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="service-card">
+              <img src="images/consaltation.webp" alt="Elderly Care" />
+              <div class="card-body">
+                <h3>Specialist Consultation</h3>
+                <p>
+                  Our specialist consultation service provides expert
+                  assessments and personalized treatment plans tailored to your
+                  healthcare needs.
+                </p>
+                <a href="services.html" class="btn btn-outline-primary"
+                  >Learn More</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="service-card">
+              <img src="images/homecare.jpeg" alt="Maternal & Child Health" />
+              <div class="card-body">
+                <h3>Home Care</h3>
+                <p>
+                  Our home care service offers professional, personalized
+                  healthcare in the comfort of your home.
+                </p>
+                <a href="services.html" class="btn btn-outline-primary"
+                  >Learn More</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="service-card">
+              <img src="images/mater.jpeg" alt="Health Education" />
+              <div class="card-body">
+                <h3>Maternal Care</h3>
+                <p>
+                  Our maternal care unit provides full support through every
+                  stage of pregnancy, childbirth, and postnatal care
+                </p>
+                <a href="services.html" class="btn btn-outline-primary"
+                  >Learn More</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <div
+              id="aboutCarousel"
+              class="carousel slide about-image mb-4"
+              data-bs-ride="carousel"
+            >
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img
+                    src="images/Hos.jpg"
+                    class="d-block w-100"
+                    alt="Hospital Image 1"
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="images/imagess.png"
+                    class="d-block w-100"
+                    alt="Hospital Image 2"
+                  />
+                </div>
+                <div class="carousel-item">
+                  <img
+                    src="images/THREATERNo.2.jpg"
+                    class="d-block w-100"
+                    alt="Hospital Image 3"
+                  />
+                </div>
+                <!-- Add more images as needed -->
+              </div>
+              <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#aboutCarousel"
+                data-bs-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#aboutCarousel"
+                data-bs-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="about-content">
+              <h2>About Hamat Healthcare</h2>
+              <p>
+                Hamat Healthcare is committed to providing quality healthcare
+                services to all our patients. Our team of experienced medical
+                professionals strives to ensure that you receive the best care
+                possible in a comfortable and supportive environment.
+              </p>
+              <p>
+                We focus on a patient-centered approach, tailoring our services
+                to meet the unique needs of each individual. Our goal is to
+                ensure your well-being and satisfaction.
+              </p>
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i class="fas fa-user-md"></i>
+                </div>
+                <div class="feature-text">
+                  <h4>Experienced Medical Professionals</h4>
+                  <p>
+                    Our team consists of highly trained and experienced
+                    healthcare providers dedicated to your care.
+                  </p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i class="fas fa-procedures"></i>
+                </div>
+                <div class="feature-text">
+                  <h4>Comprehensive Care</h4>
+                  <p>
+                    We offer a wide range of medical services to address various
+                    health needs under one roof.
+                  </p>
+                </div>
+              </div>
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i class="fas fa-heart"></i>
+                </div>
+                <div class="feature-text">
+                  <h4>Patient-Centered Approach</h4>
+                  <p>
+                    We prioritize your comfort, dignity, and individual
+                    healthcare needs throughout your care journey.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h2>Need Medical Assistance?</h2>
+            <p>
+              Our team of healthcare professionals is ready to provide you with
+              the care you need. Book an appointment today or contact us for
+              more information.
+            </p>
+            <a href="#" class="btn btn-primary">Book an Appointment</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Doctors Section -->
+    <section class="doctors-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Our Medical Team</h2>
+          <p>
+            Meet our team of experienced and dedicated healthcare professionals
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="images/Dr.Adnaanimgwork.png" alt="Dr. Jane Smith" />
+              </div>
+              <div class="doctor-info">
+                <h3>Dr.Adnaan Mustafa</h3>
+                <h4>PAEDIATRICIAN</h4>
+                <p>
+                  Dr. Mustafa, a Consultant Paediatrician and Paediatric
+                  Intensivist.With a Paediatrician available every day of the
+                  week, we’re here for all your child’s healthcare needs
+                </p>
+                <div class="doctor-social">
+                  <a
+                    href="https://www.facebook.com/naiwesthospital/posts/562448199352292/"
+                    ><i class="fab fa-facebook-f"></i
+                  ></a>
+                  <a href="https://www.instagram.com/adnaanezzi/#"
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                  <a
+                    href="https://www.linkedin.com/in/adnaan-mustafa-54025336?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B%2FDx9YmcETrC%2F%2BcEZlWCS3w%3D%3D"
+                    ><i class="fab fa-linkedin-in"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="images/Tasneemphoto1.png" alt="Dr. John Doe" />
+              </div>
+              <div class="doctor-info">
+                <h3>Dr.Tasneen Yamani</h3>
+                <h4>GERIATRIACIAN</h4>
+                <p>
+                  Dr. Tasneem Yamani Dr. Yamani is a medical doctor, healthy
+                  ageing expert, and geriatric practitioner with over 10 years
+                  of experience in geriatric medicine.
+                </p>
+                <div class="doctor-social">
+                  <a
+                    href="https://www.instagram.com/hamat_healthcare/reel/Cy26_wYtCT7/"
+                    ><i class="fab fa-facebook-f"></i
+                  ></a>
+                  <a
+                    href="https://www.instagram.com/hamat_healthcare/reel/DGPevQPxju3/"
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                  <a
+                    href="https://ke.linkedin.com/in/tasneem-yamani-nurani-710b42122"
+                    ><i class="fab fa-linkedin-in"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="doctor-card">
+              <div class="doctor-image">
+                <img src="images/Dr.Hassan.png" alt="Dr. Sarah Johnson" />
+              </div>
+              <div class="doctor-info">
+                <h3>Dr. Hassan Bharmal</h3>
+                <h4>Surgeon and Endoscopist</h4>
+                <p>Dr. Hassan Bharmal, a General Surgeon and Endoscopist</p>
+                <div class="doctor-social">
+                  <a
+                    href="https://www.linkedin.com/in/hassan-bharmal-a8409612a/overlay/about-this-profile/?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base%3BcyjfTQzyQqm0A9NFfA%2F%2FUA%3D%3D"
+                    ><i class="fab fa-linkedin-in"></i
+                  ></a>
+                  <a href="https://www.instagram.com/reel/CyLXGkzt4XJ/"
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                  <a href="https://www.instagram.com/reel/CyLXGkzt4XJ/"
+                    ><i class="fab fa-facebook-f"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+      <div class="container">
+        <div class="section-title">
+          <h2>Patient Testimonials</h2>
+          <p>What our patients say about our healthcare services</p>
+        </div>
+        <div
+          id="testimonialsCarousel"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="testimonial-card">
+                <div class="testimonial-text">
+                  <p>
+                    The home-based nursing service provided by Hamat Healthcare
+                    was exceptional. The nurses were professional, caring, and
+                    attentive to my mother's needs. I highly recommend their
+                    services.
+                  </p>
+                </div>
+                <div class="testimonial-author">
+                  <img src="images/personn.jpeg" alt="James W." />
+                  <div class="author-info">
+                    <h4>James W.</h4>
+                    <p>Home Nursing Patient</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="testimonial-card">
+                <div class="testimonial-text">
+                  <p>
+                    After my surgery, the physiotherapy services at Hamat
+                    Healthcare helped me recover quickly. The therapists were
+                    knowledgeable and created a personalized recovery plan for
+                    me.
+                  </p>
+                </div>
+                <div class="testimonial-author">
+                  <img src="images/personnn.jpeg" alt="Mary K." />
+                  <div class="author-info">
+                    <h4>Mary K.</h4>
+                    <p>Physiotherapy Patient</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="testimonial-card">
+                <div class="testimonial-text">
+                  <p>
+                    The maternal care I received during my pregnancy was
+                    outstanding. The doctors and nurses were supportive and
+                    provided comprehensive prenatal and postnatal care.
+                  </p>
+                </div>
+                <div class="testimonial-author">
+                  <img src="images/person.jpeg" alt="Anonymous" />
+                  <div class="author-info">
+                    <h4>Tabitha Njeri</h4>
+                    <p>Maternal Care Patient</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#testimonialsCarousel"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#testimonialsCarousel"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" style="padding: 100px 0">
+      <div class="container">
+        <div class="section-title text-center mb-5">
+          <h2>Contact Us</h2>
+          <p>
+            We are here to assist you with any inquiries or support you need.
+          </p>
+        </div>
+        <div class="row">
+          <!-- Contact Information -->
+          <div class="col-lg-6">
+            <div class="contact-info bg-primary text-white p-4 rounded">
+              <h3 class="mb-4">Telemedicine</h3>
+              <h5>Contact Information</h5>
+              <p>
+                <i class="fas fa-map-marker-alt me-2"></i> Membly, Ruiru Eastern By-Pass
+              </p>
+              <p>
+                <i class="fas fa-envelope me-2"></i> info@hamathealthcare.com
+              </p>
+              <p><i class="fas fa-phone-alt me-2"></i> +254 721 600700</p>
+            </div>
+          </div>
+          <!-- Contact Form -->
+          <div class="col-lg-6">
+            <form class="contact-form bg-light p-4 rounded">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Name"
+                    required
+                  />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="Email"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Phone Number"
+                    required
+                  />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Service"
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <textarea
+                  class="form-control"
+                  rows="4"
+                  placeholder="How can we help you?"
+                  required
+                ></textarea>
+              </div>
+
+              <div class="row align-items-center">
+                  <button type="submit" class="btn btn-warning text-white px-4">
+                    Send Message
+                  </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--  WhatsApp Hover  -->
+    <div class="whatsapp-float">
+      <button class="whatsapp-button" id="whatsappToggle">
+        <div class="profile-image-container">
+          <img src="images/Tasneemphoto1.png" alt="Chat Icon" class="whatsapp-button-img">
+          <span class="online-indicator"></span>
+        </div>
+      </button>
+
+      <div class="whatsapp-services" id="whatsappServices">
+        <div class="chat-header">
+          <div class="profile-image-container">
+            <img src="images/Tasneemphoto1.png" alt="Profile" class="chat-avatar">
+            <span class="online-indicator"></span>
+          </div>
+          <div class="chat-bubble">Hi! How can we help you?</div>
+        </div>
+
+        <label><input type="checkbox" value="Laboratory"><span>Laboratory</span></label>
+        <label><input type="checkbox" value="Operation Theatre"><span>Operation Theatre</span></label>
+        <label><input type="checkbox" value="Geriatric Care"><span>Geriatric Care</span></label>
+        <label><input type="checkbox" value="Specialist Consultation"><span>Specialist Consultation</span></label>
+        <label><input type="checkbox" value="Home Care"><span>Home Care</span></label>
+        <label><input type="checkbox" value="Maternal Care"><span>Maternal Care</span></label>
+
+        <button id="whatsappConfirm">Confirm</button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-about">
+              <img
+                src="images/Logo.PNG"
+                alt="Hamat Healthcare Logo"
+                class="mb-4"
+              />
+              <p>
+                Hamat Healthcare is committed to providing quality healthcare
+                services to all our patients. Our team of experienced medical
+                professionals strives to ensure that you receive the best care
+                possible.
+              </p>
+              <div class="footer-social">
+                <a
+                  href="https://www.facebook.com/61565940900209"
+                  target="_blank"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a href="https://x.com/Hamatealthcare" target="_blank"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+                <a
+                  href="https://www.instagram.com/hamat_healthcare/"
+                  target="_blank"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+                <a
+                  href="https://www.linkedin.com/company/105089580/admin/dashboard/"
+                  target="_blank"
+                  ><i class="fab fa-linkedin-in"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-links">
+              <h4>Quick Links</h4>
+              <ul>
+                <li>
+                  <a href="index.html"
+                    ><i class="fas fa-angle-right"></i> Home</a
+                  >
+                </li>
+                <li>
+                  <a href="about.html"
+                    ><i class="fas fa-angle-right"></i> About Us</a
+                  >
+                </li>
+                <li>
+                  <a href="services.html"
+                    ><i class="fas fa-angle-right"></i> Services</a
+                  >
+                  <li>
+                    <a href="news.html"><i class="fas fa-angle-right"></i>News</a>
+                  </li>
+                </li>
+                <li>
+                  <a href="contact.html"
+                    ><i class="fas fa-angle-right"></i> Contact Us</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-contact">
+              <h4>Contact Us</h4>
+              <p>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Membly, Ruiru Eastern By-Pass</span>
+              </p>
+              <p>
+                <i class="fas fa-phone-alt"></i>
+                <span>+254 721 600700</span>
+              </p>
+              <p>
+                <i class="fas fa-envelope"></i>
+                <span>info@hamathealthcare.com</span>
+              </p>
+              <p>
+                <i class="fas fa-clock"></i>
+                <span>Opening Hours: Mon-Sun 24/7</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p>© 2025 Hamat Healthcare. All Rights Reserved.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <!--  WhatsApp Script   -->
+    <script>
+      const toggleBtn = document.getElementById('whatsappToggle');
+      const servicesBox = document.getElementById('whatsappServices');
+      const confirmBtn = document.getElementById('whatsappConfirm');
+
+      // Toggle service box
+      toggleBtn.addEventListener('click', () => {
+        servicesBox.style.display = servicesBox.style.display === 'flex' ? 'none' : 'flex';
+      });
+
+      // Close on outside click
+      document.addEventListener('click', function (e) {
+        if (!toggleBtn.contains(e.target) && !servicesBox.contains(e.target)) {
+          servicesBox.style.display = 'none';
+        }
+      });
+
+      // Confirm selection
+      confirmBtn.addEventListener('click', () => {
+        const selected = Array.from(servicesBox.querySelectorAll('input[type="checkbox"]:checked'))
+                .map(cb => cb.value)
+                .join(', ');
+        if (selected) {
+          const phone = "254713024918";
+          const message = encodeURIComponent(`I am interested in: ${selected}`);
+          window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+        } else {
+          alert("Please select at least one service.");
+        }
+      });
+    </script>
+
+  </body>
+</html>

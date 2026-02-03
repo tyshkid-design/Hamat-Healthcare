@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News | Hamat Healthcare</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: #f8f9fa;
+        color: #222;
+      }
+      /* Top Info Bar */
+      .topbar {
+        background: #0666b3;
+        color: #fff;
+        font-size: 15px;
+        padding: 0.3rem 0;
+      }
+      .container-topbar {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .topbar-left span,
+      .topbar-right span {
+        margin-right: 18px;
+        display: inline-block;
+      }
+      .topbar-left i,
+      .topbar-right i {
+        color: #ffa726;
+        margin-right: 6px;
+        font-size: 15px;
+      }
+      @media (max-width: 700px) {
+        .container-topbar {
+          flex-direction: column;
+          align-items: flex-start;
+          font-size: 14px;
+        }
+        .topbar-right {
+          margin-top: 4px;
+        }
+      }
+
+      /* Main Navbar */
+      .main-navbar {
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+        padding: 0;
+      }
+      .container-navbar {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.7rem 0;
+      }
+      .navbar-logo img {
+        max-height: 60px;
+      }
+      .navbar-links {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+      }
+      .navbar-links li {
+        margin: 0 18px;
+      }
+      .navbar-links a {
+        color: #222;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 500;
+        transition: color 0.2s;
+        padding: 4px 0;
+        border-bottom: 2px solid transparent;
+      }
+      .navbar-links a.active,
+      .navbar-links a:hover {
+        color: #0666b3;
+        border-bottom: 2px solid #0666b3;
+      }
+      .navbar-btn {
+        background: #ffa726;
+        color: #fff;
+        font-weight: 700;
+        border: none;
+        border-radius: 22px;
+        padding: 10px 32px;
+        font-size: 18px;
+        text-decoration: none;
+        transition: background 0.2s, color 0.2s;
+        margin-left: 18px;
+        box-shadow: 0 2px 8px rgba(255, 167, 38, 0.08);
+      }
+      .navbar-btn:hover {
+        background: #f7941d;
+        color: #fff;
+      }
+      @media (max-width: 900px) {
+        .container-navbar {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 1rem 0.5rem;
+        }
+        .navbar-links {
+          margin: 10px 0;
+          flex-wrap: wrap;
+        }
+        .navbar-links li {
+          margin: 0 10px 8px 0;
+        }
+        .navbar-btn {
+          margin: 10px 0 0 0;
+        }
+      }
+      .navbar {
+        font-weight: 500;
+        font-size: 1rem;
+        letter-spacing: 0.5px;
+      }
+      .navbar .btn-warning {
+        background: #ffc107;
+        color: #222;
+        font-weight: 600;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 22px;
+        transition: background 0.2s, color 0.2s;
+      }
+      .navbar .btn-warning:hover {
+        background: #e68a1c;
+        color: #fff;
+      }
+      .navbar-nav .nav-link.active,
+      .navbar-nav .nav-link:focus,
+      .navbar-nav .nav-link:hover {
+        color: #f7941d !important;
+      }
+      .section-title h2 {
+        font-weight: 700;
+        color: #222;
+        margin-bottom: 0.5rem;
+      }
+      .title-underline {
+        width: 60px;
+        height: 4px;
+        background: #f7941d;
+        border-radius: 2px;
+        margin: 0.5rem auto 0 auto;
+      }
+      .card-title.text-primary {
+        color: #0065b3 !important;
+        font-weight: 600;
+      }
+      .footer {
+        background: #343a40;
+        color: #fff;
+        padding: 60px 0 0 0;
+        border-top: 1px solid #222;
+      }
+      .footer .footer-title,
+      .footer h4 {
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: #fff;
+        border-bottom: 2px solid #f7941d;
+        display: inline-block;
+        padding-bottom: 4px;
+        letter-spacing: 1px;
+        font-size: 1.2rem;
+      }
+      .footer .footer-logo,
+      .footer-about img {
+        max-width: 160px;
+        margin-bottom: 18px;
+      }
+      .footer .footer-about p {
+        color: #bbb;
+        font-size: 15px;
+        margin-bottom: 18px;
+      }
+      .footer .footer-social a {
+        display: inline-block;
+        margin-right: 10px;
+        color: #fff;
+        background: #23272b;
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        text-align: center;
+        line-height: 36px;
+        font-size: 17px;
+        transition: background 0.2s, color 0.2s, transform 0.2s;
+      }
+      .footer .footer-social a:hover {
+        background: #f7941d;
+        color: #fff;
+        transform: scale(1.1);
+      }
+      .footer .footer-links ul {
+        padding: 0;
+        list-style: none;
+        margin-bottom: 0;
+      }
+      .footer .footer-links ul li {
+        margin-bottom: 12px;
+      }
+      .footer .footer-links ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 16px;
+        transition: color 0.2s, padding-left 0.2s;
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        letter-spacing: 0.2px;
+      }
+      .footer .footer-links ul li a i {
+        color: #f7941d;
+        margin-right: 8px;
+        font-size: 15px;
+        transition: color 0.2s;
+      }
+      .footer .footer-links ul li a:hover {
+        color: #f7941d;
+        text-decoration: underline;
+        padding-left: 6px;
+      }
+      .footer-bottom {
+        background: #23272b;
+        color: #bbb;
+        padding: 15px 0 8px 0;
+        margin-top: 30px;
+        font-size: 14px;
+        text-align: center;
+        letter-spacing: 0.5px;
+      }
+      @media (min-width: 992px) {
+        .footer .row > div:not(:last-child) {
+          border-right: 1px solid #444;
+        }
+        .footer .row > div {
+          padding-right: 32px;
+        }
+      }
+      @media (max-width: 991px) {
+        .footer .footer-title,
+        .footer h4 {
+          margin-top: 24px;
+        }
+        .footer .row > div {
+          border-right: none !important;
+          padding-right: 0 !important;
+        }
+      }
+
+
+
+
+      /* Floating WhatsApp Button */
+/* WhatsApp Button with Online Indicator */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.whatsapp-button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  overflow: visible;
+  cursor: pointer;
+}
+
+.profile-image-container {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+
+.whatsapp-button-img, .chat-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.online-indicator {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 15px;
+  height: 15px;
+  background-color: #4CAF50;
+  border-radius: 50%;
+  border: 2px solid white;
+  z-index: 10;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* Rest of your existing WhatsApp styles... */
+
+
+/* WhatsApp Services Box */
+
+/* WhatsApp Services Box */
+.whatsapp-services {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  width: 280px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  padding: 15px;
+  gap: 10px;
+}
+
+/* Text title */
+.whatsapp-services p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Checkbox Style as Pills */
+.whatsapp-services label {
+  display: flex;
+  align-items: center;
+  border: 2px solid #25d366;
+  border-radius: 25px;
+  padding: 10px 15px;
+  color: #25d366;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.whatsapp-services label:hover {
+  background-color: #eafaf1;
+}
+
+.whatsapp-services input[type="checkbox"] {
+  display: none;
+}
+
+.whatsapp-services input[type="checkbox"]:checked + span {
+  background-color: #25d366;
+  color: white;
+  border-radius: 20px;
+  padding: 8px 12px;
+}
+
+/* Confirm Button */
+.whatsapp-services button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #25d366;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.chat-avatar {
+  width: 60px;      /* Same as WhatsApp button */
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 12px;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.chat-bubble {
+  background-color: #f1f1f1;
+  padding: 12px 16px;
+  border-radius: 16px;
+  max-width: 200px;
+  font-size: 14px;
+  line-height: 1.4;
+  position: relative;
+}
+
+.chat-bubble::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: -8px;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid #f1f1f1;
+}
+
+
+
+
+
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR START -->
+    <!-- Top Info Bar -->
+    <div class="topbar">
+      <div class="container-topbar">
+        <div class="topbar-left">
+          <span
+            ><i class="fas fa-phone-alt"></i> Call Us: +254 721 600700</span
+          >
+          <span><i class="fas fa-envelope"></i>info@hamathealthcare.com</span>
+        </div>
+        <div class="topbar-right">
+          <span><i class="fas fa-clock"></i> Opening Hours: Mon-Sun 24/7</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Navbar -->
+    <nav class="main-navbar">
+      <div class="container-navbar">
+        <a class="navbar-logo" href="index.html">
+          <img src="images/Logo.PNG" alt="Hamat Healthcare Logo" />
+        </a>
+        <ul class="navbar-links">
+          <li><a href="index.html" >Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="news.html" class="active">News</a></li>
+          <li><a href="contact.html">Contacts</a></li>
+        </ul>
+        <a href="#" class="navbar-btn">Book Appointment</a>
+      </div>
+    </nav>
+
+    <!-- PAGE CONTENT: News Section -->
+    <section class="container py-5" style="margin-top: 40px">
+      <div class="section-title text-center mb-5">
+        <h2>Latest News & Updates</h2>
+        <div class="title-underline mx-auto"></div>
+        <p class="lead mt-3">
+          Stay up to date with the latest news, events, and health tips from
+          Hamat Healthcare.
+        </p>
+      </div>
+      <div class="row g-4">
+        <!-- News Item 1 -->
+        <div class="col-md-6">
+          <div class="card h-100 shadow-sm">
+            <img
+              src="images/labw.jpg"
+              class="card-img-top"
+              alt="New Laboratory Services"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-primary">
+                New Laboratory Services Launched
+              </h5>
+              <p class="card-text">
+                We are excited to announce the launch of our state-of-the-art
+                laboratory, offering advanced diagnostic tests for our patients.
+                Our new facility ensures faster results and greater accuracy for
+                your health needs.
+              </p>
+              <p class="text-muted mb-0">
+                <i class="fas fa-calendar-alt"></i> June 2025
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- News Item 2 -->
+        <div class="col-md-6">
+          <div class="card h-100 shadow-sm">
+            <img
+              src="images/homecare.jpeg"
+              class="card-img-top"
+              alt="Homecare Expansion"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-primary">
+                Homecare Services Expanded
+              </h5>
+              <p class="card-text">
+                Our homecare and geriatric services have expanded to cover more
+                areas in Nairobi. We are committed to bringing quality
+                healthcare to your doorstep, ensuring comfort and expert support
+                for your loved ones.
+              </p>
+              <p class="text-muted mb-0">
+                <i class="fas fa-calendar-alt"></i> May 2025
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- News Item 3 -->
+        <div class="col-md-6">
+          <div class="card h-100 shadow-sm">
+            <img
+              src="images/surgical.jpg"
+              class="card-img-top"
+              alt="Surgical Care"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-primary">
+                Affordable Surgical Care Now Available
+              </h5>
+              <p class="card-text">
+                We now offer affordable surgical and diagnostic services at our
+                Membley facility. Our experienced surgeons and flexible payment
+                plans make quality care accessible for all.
+              </p>
+              <p class="text-muted mb-0">
+                <i class="fas fa-calendar-alt"></i> April 2025
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- News Item 4 -->
+        <div class="col-md-6">
+          <div class="card h-100 shadow-sm">
+            <img
+              src="images/consaltation.webp"
+              class="card-img-top"
+              alt="Specialist Consultation"
+            />
+            <div class="card-body">
+              <h5 class="card-title text-primary">
+                Specialist Consultation Days
+              </h5>
+              <p class="card-text">
+                Meet our team of specialists in pediatrics, geriatrics, and
+                surgery every week. Book your appointment online or call us for
+                more information on our consultation schedules.
+              </p>
+              <p class="text-muted mb-0">
+                <i class="fas fa-calendar-alt"></i> March 2025
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--  WhatsApp Hover  -->
+    <div class="whatsapp-float">
+      <button class="whatsapp-button" id="whatsappToggle">
+        <div class="profile-image-container">
+          <img src="images/Tasneemphoto1.png" alt="Chat Icon" class="whatsapp-button-img">
+          <span class="online-indicator"></span>
+        </div>
+      </button>
+
+      <div class="whatsapp-services" id="whatsappServices">
+        <div class="chat-header">
+          <div class="profile-image-container">
+            <img src="images/Tasneemphoto1.png" alt="Profile" class="chat-avatar">
+            <span class="online-indicator"></span>
+          </div>
+          <div class="chat-bubble">Hi! How can we help you?</div>
+        </div>
+
+        <label><input type="checkbox" value="Laboratory"><span>Laboratory</span></label>
+        <label><input type="checkbox" value="Operation Theatre"><span>Operation Theatre</span></label>
+        <label><input type="checkbox" value="Geriatric Care"><span>Geriatric Care</span></label>
+        <label><input type="checkbox" value="Specialist Consultation"><span>Specialist Consultation</span></label>
+        <label><input type="checkbox" value="Home Care"><span>Home Care</span></label>
+        <label><input type="checkbox" value="Maternal Care"><span>Maternal Care</span></label>
+
+        <button id="whatsappConfirm">Confirm</button>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer mt-5">
+      <div class="container">
+        <div class="row">
+          <!-- About + Social -->
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-about">
+              <img
+                src="images/Logo.PNG"
+                alt="Hamat Healthcare Logo"
+                class="footer-logo"
+              />
+              <p>
+                Hamat Healthcare is committed to providing quality healthcare
+                services to all our patients. Our team of experienced medical
+                professionals strives to ensure that you receive the best care
+                possible.
+              </p>
+              <div class="footer-social">
+                <a
+                  href="https://www.facebook.com/61565940900209"
+                  target="_blank"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a href="https://x.com/Hamatealthcare" target="_blank"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+                <a
+                  href="https://www.instagram.com/hamat_healthcare/"
+                  target="_blank"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+                <a
+                  href="https://www.linkedin.com/company/105089580/admin/dashboard/"
+                  target="_blank"
+                  ><i class="fab fa-linkedin-in"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <!-- Quick Links -->
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-links">
+              <h4>Quick Links</h4>
+              <ul>
+                <li>
+                  <a href="index.html"
+                    ><i class="fas fa-angle-right"></i> Home</a
+                  >
+                </li>
+                <li>
+                  <a href="about.html"
+                    ><i class="fas fa-angle-right"></i> About Us</a
+                  >
+                </li>
+                <li>
+                  <a href="services.html"
+                    ><i class="fas fa-angle-right"></i> Services</a
+                  >
+                </li>
+                <li>
+                  <a href="news.html"
+                    ><i class="fas fa-angle-right"></i> News</a
+                  >
+                </li>
+                <li>
+                  <a href="contact.html"
+                    ><i class="fas fa-angle-right"></i> Contact Us</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- Services Column -->
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-links">
+              <h4>Services</h4>
+              <ul>
+                <li>
+                  <a href="lab.html"
+                    ><i class="fas fa-angle-right"></i> Laboratory</a
+                  >
+                </li>
+                <li>
+                  <a href="operation.html"
+                    ><i class="fas fa-angle-right"></i> Operation Theatre</a
+                  >
+                </li>
+                <li>
+                  <a href="geriatric.html"
+                    ><i class="fas fa-angle-right"></i> Geriatric Care</a
+                  >
+                </li>
+                <li>
+                  <a href="Consultation.html"
+                    ><i class="fas fa-angle-right"></i> Specialist
+                    Consultation</a
+                  >
+                </li>
+                <li>
+                  <a href="homecare.html"
+                    ><i class="fas fa-angle-right"></i> Home Care</a
+                  >
+                </li>
+                <li>
+                  <a href="maternal.html"
+                    ><i class="fas fa-angle-right"></i> Maternal Care</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p>© 2025 Hamat Healthcare. All Rights Reserved.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+
+    <!--  WhatsApp Script   -->
+    <script>
+      const toggleBtn = document.getElementById('whatsappToggle');
+      const servicesBox = document.getElementById('whatsappServices');
+      const confirmBtn = document.getElementById('whatsappConfirm');
+
+      // Toggle service box
+      toggleBtn.addEventListener('click', () => {
+        servicesBox.style.display = servicesBox.style.display === 'flex' ? 'none' : 'flex';
+      });
+
+      // Close on outside click
+      document.addEventListener('click', function (e) {
+        if (!toggleBtn.contains(e.target) && !servicesBox.contains(e.target)) {
+          servicesBox.style.display = 'none';
+        }
+      });
+
+      // Confirm selection
+      confirmBtn.addEventListener('click', () => {
+        const selected = Array.from(servicesBox.querySelectorAll('input[type="checkbox"]:checked'))
+                .map(cb => cb.value)
+                .join(', ');
+        if (selected) {
+          const phone = "254713024918";
+          const message = encodeURIComponent(`I am interested in: ${selected}`);
+          window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+        } else {
+          alert("Please select at least one service.");
+        }
+      });
+    </script>
+  </body>
+</html>

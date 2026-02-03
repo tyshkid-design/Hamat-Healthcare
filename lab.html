@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laboratory - Hamat Healthcare</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome for icons -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <!-- Tailwind for content styling (optional, if you want to keep your current content styles) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        --primary-color: #0065b3;
+        --secondary-color: #00a0e3;
+        --accent-color: #f7941d;
+        --light-gray: #f8f9fa;
+        --dark-gray: #343a40;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: #333;
+      }
+      .top-bar {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 8px 0;
+        font-size: 14px;
+      }
+      .top-bar i {
+        color: var(--accent-color);
+        margin-right: 5px;
+      }
+      .navbar {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 15px 0;
+      }
+      .navbar-brand img {
+        max-height: 60px;
+      }
+      .navbar-nav .nav-link {
+        color: var(--dark-gray);
+        font-weight: 500;
+        padding: 10px 15px;
+        transition: color 0.3s ease;
+        margin-right: 30px;
+      }
+      .navbar-nav .nav-link:hover,
+      .navbar-nav .nav-link.active {
+        color: var(--primary-color);
+      }
+      .navbar .btn-appointment {
+        background-color: var(--accent-color);
+        color: white;
+        border-radius: 30px;
+        padding: 8px 20px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+      .navbar .btn-appointment:hover {
+        background-color: #e68a1c;
+        transform: translateY(-2px);
+      }
+      /* Responsive fix for sidebar */
+      @media (max-width: 991px) {
+        .sidebar-lab {
+          width: 100% !important;
+          min-height: auto !important;
+          margin-bottom: 2rem;
+        }
+      }
+      /* Footer Styles */
+      .footer-dark {
+        background: #343a40;
+        color: #fff;
+        padding: 60px 0 0 0;
+        border-top: 1px solid #222;
+      }
+      .footer-dark .footer-title {
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: #fff;
+        border-bottom: 2px solid #f7941d;
+        display: inline-block;
+        padding-bottom: 4px;
+      }
+      .footer-dark .footer-link {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.2s;
+        display: block;
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
+      .footer-dark .footer-link:hover {
+        color: #f7941d;
+        text-decoration: underline;
+      }
+      .footer-dark .footer-contact i,
+      .footer-dark .footer-links i {
+        color: #f7941d;
+        margin-right: 8px;
+        font-size: 18px;
+      }
+      .footer-dark .footer-social a {
+        display: inline-block;
+        margin-right: 10px;
+        color: #fff;
+        background: #23272b;
+        border-radius: 50%;
+        width: 38px;
+        height: 38px;
+        text-align: center;
+        line-height: 38px;
+        font-size: 18px;
+        transition: background 0.2s, color 0.2s;
+      }
+      .footer-dark .footer-social a:hover {
+        background: #f7941d;
+        color: #fff;
+      }
+      .footer-dark .footer-logo {
+        max-width: 200px;
+        margin-bottom: 18px;
+      }
+      .footer-dark .footer-bottom {
+        background: #23272b;
+        color: #fff;
+        text-align: center;
+        padding: 18px 0 10px 0;
+        margin-top: 32px;
+        font-size: 15px;
+        letter-spacing: 0.5px;
+      }
+
+
+  /* Floating WhatsApp Button */
+/* WhatsApp Button with Online Indicator */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.whatsapp-button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  overflow: visible;
+  cursor: pointer;
+}
+
+.profile-image-container {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+
+.whatsapp-button-img, .chat-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.online-indicator {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 15px;
+  height: 15px;
+  background-color: #4CAF50;
+  border-radius: 50%;
+  border: 2px solid white;
+  z-index: 10;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* Rest of your existing WhatsApp styles... */
+
+
+/* WhatsApp Services Box */
+
+/* WhatsApp Services Box */
+.whatsapp-services {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  width: 280px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  padding: 15px;
+  gap: 10px;
+}
+
+/* Text title */
+.whatsapp-services p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Checkbox Style as Pills */
+.whatsapp-services label {
+  display: flex;
+  align-items: center;
+  border: 2px solid #25d366;
+  border-radius: 25px;
+  padding: 10px 15px;
+  color: #25d366;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.whatsapp-services label:hover {
+  background-color: #eafaf1;
+}
+
+.whatsapp-services input[type="checkbox"] {
+  display: none;
+}
+
+.whatsapp-services input[type="checkbox"]:checked + span {
+  background-color: #25d366;
+  color: white;
+  border-radius: 20px;
+  padding: 8px 12px;
+}
+
+/* Confirm Button */
+.whatsapp-services button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #25d366;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.chat-avatar {
+  width: 60px;      /* Same as WhatsApp button */
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 12px;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.chat-bubble {
+  background-color: #f1f1f1;
+  padding: 12px 16px;
+  border-radius: 16px;
+  max-width: 200px;
+  font-size: 14px;
+  line-height: 1.4;
+  position: relative;
+}
+
+.chat-bubble::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: -8px;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid #f1f1f1;
+}
+
+
+
+
+    </style>
+  </head>
+  <body class="bg-gray-100 font-sans">
+    <!-- Top Bar -->
+    <div class="top-bar d-none d-md-block">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <span class="me-3"
+              ><i class="fas fa-phone-alt"></i> Call Us: +254 721 600700</span
+            >
+            <span class="me-3"
+              ><i class="fas fa-envelope"></i>info@hamathealthcare.com</span
+            >
+          </div>
+          <div class="col-md-4 text-end">
+            <span
+              ><i class="fas fa-clock"></i> Opening Hours: Mon-Sun 24/7</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/Logo.PNG" alt="Hamat Healthcare Logo" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="services.html">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="news.html">News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contacts</a>
+            </li>
+          </ul>
+          <a href="#" class="btn btn-appointment ms-3">Book Appointment</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container-fluid py-5">
+      <div class="row">
+        <!-- Sidebar -->
+        <aside
+          class="col-lg-3 sidebar-lab bg-white p-4 shadow-md rounded mb-4 mb-lg-0"
+        >
+          <h2 class="fs-4 fw-bold mb-4">Our Services</h2>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <a
+                href="lab.html"
+                class="text-primary fw-semibold text-decoration-none"
+                >Laboratory</a
+              >
+            </li>
+            <li class="mb-2">
+              <a href="operation.html" class="text-dark text-decoration-none"
+                >Operation Theatre</a
+              >
+            </li>
+            <li class="mb-2">
+              <a href="geriatric.html" class="text-dark text-decoration-none"
+                >Geriatric Care</a
+              >
+            </li>
+            <li class="mb-2">
+              <a href="Consultation.html" class="text-dark text-decoration-none"
+                >Specialist Consultation</a
+              >
+            </li>
+            <li class="mb-2">
+              <a href="homecare.html" class="text-dark text-decoration-none"
+                >Home Care</a
+              >
+            </li>
+            <li class="mb-2">
+              <a href="maternal.html" class="text-dark text-decoration-none"
+                >Maternal Care</a
+              >
+            </li>
+          </ul>
+        </aside>
+
+        <!-- Content -->
+        <section class="col-lg-9">
+          <div class="bg-white p-4 rounded shadow mb-4">
+            <div class="row align-items-center g-4">
+              <!-- Text Content -->
+              <div class="col-lg-7">
+                <h1 class="display-6 fw-bold text-primary mb-3">Laboratory</h1>
+                <p class="fst-italic text-secondary mb-3">
+                  Our laboratory is dedicated to providing fast, accurate
+                  diagnostic testing to support your healthcare needs.
+                </p>
+                <p class="text-muted mb-3">
+                  Our Cardiology department specializes in advanced heart care
+                  through innovative technology, compassionate expertise, and a
+                  commitment to wellness. Whether you're managing chronic
+                  conditions like hypertension or seeking intervention for acute
+                  cardiac issues, our team provides comprehensive support every
+                  step of the way.
+                </p>
+                <p class="text-muted mb-3">
+                  Equipped with advanced technology and staffed by skilled
+                  professionals, we ensure reliable results that are crucial for
+                  effective treatment. Our commitment to quality and precision
+                  helps healthcare providers make informed decisions, promoting
+                  better health outcomes for our patients.
+                </p>
+                <p class="text-muted">
+                  Trust us for your diagnostic needs, where accuracy meets
+                  compassionate care.
+                </p>
+              </div>
+              <!-- Image -->
+              <div class="col-lg-5">
+                <img
+                  src="images/lab.jpg"
+                  alt="Laboratory"
+                  class="img-fluid rounded shadow"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Laboratory Services List -->
+          <div class="bg-blue-50 rounded-lg p-4 p-md-5 shadow">
+            <h2
+              class="h4 fw-bold text-blue-800 mb-3 d-flex align-items-center gap-2"
+            >
+              <svg
+                class="me-2"
+                width="28"
+                height="28"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M9 17v-6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v6m-6 0h6m-6 0a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2m-6 0v1a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-1"
+                ></path>
+              </svg>
+              Comprehensive Laboratory Services
+            </h2>
+            <p class="mb-3 text-gray-700">
+              At Hamat Healthcare, we offer a wide range of diagnostic tests to
+              help you stay on top of your health:
+            </p>
+            <ul
+              class="row row-cols-1 row-cols-sm-2 g-2 mb-3 text-lg text-gray-800"
+            >
+              <li class="col d-flex align-items-center gap-2">
+                🩸 <span>Blood Tests</span>
+              </li>
+              <li class="col d-flex align-items-center gap-2">
+                💧 <span>Urinalysis</span>
+              </li>
+              <li class="col d-flex align-items-center gap-2">
+                💩 <span>Stool Tests</span>
+              </li>
+              <li class="col d-flex align-items-center gap-2">
+                🤰 <span>Pregnancy Tests</span>
+              </li>
+              <li class="col d-flex align-items-center gap-2">
+                🧪 <span>Hormone Tests</span>
+              </li>
+              <li class="col d-flex align-items-center gap-2">
+                🧬 <span>Kidney & Liver Function Tests</span>
+              </li>
+              <li class="col d-flex align-items-center gap-2">
+                💉 <span>Diabetes Screening</span>
+              </li>
+            </ul>
+            <p class="text-blue-900 fw-semibold">
+              Our state-of-the-art laboratory ensures accurate and timely
+              results for better health management.
+            </p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!--  WhatsApp Hover  -->
+    <div class="whatsapp-float">
+      <button class="whatsapp-button" id="whatsappToggle">
+        <div class="profile-image-container">
+          <img src="images/Tasneemphoto1.png" alt="Chat Icon" class="whatsapp-button-img">
+          <span class="online-indicator"></span>
+        </div>
+      </button>
+
+      <div class="whatsapp-services" id="whatsappServices">
+        <div class="chat-header">
+          <div class="profile-image-container">
+            <img src="images/Tasneemphoto1.png" alt="Profile" class="chat-avatar">
+            <span class="online-indicator"></span>
+          </div>
+          <div class="chat-bubble">Hi! How can we help you?</div>
+        </div>
+
+        <label><input type="checkbox" value="Laboratory"><span>Laboratory</span></label>
+        <label><input type="checkbox" value="Operation Theatre"><span>Operation Theatre</span></label>
+        <label><input type="checkbox" value="Geriatric Care"><span>Geriatric Care</span></label>
+        <label><input type="checkbox" value="Specialist Consultation"><span>Specialist Consultation</span></label>
+        <label><input type="checkbox" value="Home Care"><span>Home Care</span></label>
+        <label><input type="checkbox" value="Maternal Care"><span>Maternal Care</span></label>
+
+        <button id="whatsappConfirm">Confirm</button>
+      </div>
+    </div>
+
+    <!-- Footer Start -->
+    <footer class="footer-dark mt-5">
+      <div class="container">
+        <div class="row align-items-start">
+          <!-- About -->
+          <div class="col-md-4 mb-4">
+            <img
+              src="images/Logo.PNG"
+              alt="Hamat Healthcare Logo"
+              class="footer-logo"
+            />
+            <p class="mt-3">
+              Hamat Healthcare is committed to providing quality healthcare
+              services to all our patients. Our team of experienced medical
+              professionals strives to ensure that you receive the best care
+              possible.
+            </p>
+            <div class="footer-social mt-3">
+              <a
+                href="https://facebook.com/"
+                target="_blank"
+                aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a
+                href="https://twitter.com/"
+                target="_blank"
+                aria-label="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a
+                href="https://instagram.com/"
+                target="_blank"
+                aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a
+                href="https://linkedin.com/"
+                target="_blank"
+                aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="col-md-4 mb-4">
+            <h5 class="footer-title">Quick Links</h5>
+            <div class="footer-links">
+              <a href="index.html" class="footer-link"
+                ><i class="fas fa-angle-right"></i> Home</a
+              >
+              <a href="about.html" class="footer-link"
+                ><i class="fas fa-angle-right"></i> About Us</a
+              >
+              <a href="services.html" class="footer-link"
+                ><i class="fas fa-angle-right"></i> Services</a
+              >
+              <a href="news.html" class="footer-link"
+                ><i class="fas fa-angle-right"></i> News</a
+              >
+              <a href="contact.html" class="footer-link"
+                ><i class="fas fa-angle-right"></i> Contact Us</a
+              >
+            </div>
+          </div>
+
+          <!-- Contact -->
+          <div class="col-md-4 mb-4">
+            <h5 class="footer-title">Contact Us</h5>
+            <ul class="list-unstyled footer-contact">
+              <li class="mb-2">
+                <i class="fas fa-map-marker-alt"></i> Membly, Ruiru Eastern By-Pass
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-phone-alt"></i> +254 721 600700
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-envelope"></i> info@hamathealthcare.com
+              </li>
+              <li class="mb-2">
+                <i class="fas fa-clock"></i> Opening Hours: Mon-Sun 24/7
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2025 Hamat Healthcare. All Rights Reserved.
+      </div>
+    </footer>
+    <!-- Footer End -->
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <!--  WhatsApp Script   -->
+    <script>
+      const toggleBtn = document.getElementById('whatsappToggle');
+      const servicesBox = document.getElementById('whatsappServices');
+      const confirmBtn = document.getElementById('whatsappConfirm');
+
+      // Toggle service box
+      toggleBtn.addEventListener('click', () => {
+        servicesBox.style.display = servicesBox.style.display === 'flex' ? 'none' : 'flex';
+      });
+
+      // Close on outside click
+      document.addEventListener('click', function (e) {
+        if (!toggleBtn.contains(e.target) && !servicesBox.contains(e.target)) {
+          servicesBox.style.display = 'none';
+        }
+      });
+
+      // Confirm selection
+      confirmBtn.addEventListener('click', () => {
+        const selected = Array.from(servicesBox.querySelectorAll('input[type="checkbox"]:checked'))
+                .map(cb => cb.value)
+                .join(', ');
+        if (selected) {
+          const phone = "254713024918";
+          const message = encodeURIComponent(`I am interested in: ${selected}`);
+          window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+        } else {
+          alert("Please select at least one service.");
+        }
+      });
+    </script>
+  </body>
+</html>

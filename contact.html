@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact us</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" />
+    <style>
+      /* Additional styles specific to About page */
+      .about-header {
+        background-image: url("images/image.png"); /* Replace with your image path */
+        background-size: cover;
+        background-position: center;
+        position: relative;
+        height: 60vh;
+        display: flex;
+        align-items: center;
+        color: var(--light-text);
+        z-index: 1; /* Ensure the header is above other elements */
+      }
+
+      .about-header .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          rgba(0, 101, 179, 0.4),
+          rgba(0, 160, 227, 0.4)
+        ); /* Adjust opacity as needed */
+        z-index: 2; /* Ensure the overlay is above the background image */
+      }
+
+      .about-header .container {
+        position: relative;
+        z-index: 3; /* Ensure the content is above the overlay */
+      }
+
+      .about-header h1 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        color: #e68a1c; /* Change this to a visible color, e.g., white */
+      }
+
+      .breadcrumb {
+        background-color: transparent;
+        padding: 0;
+        margin-bottom: 0;
+      }
+
+      .breadcrumb-item,
+      .breadcrumb-item a {
+        color: var(--light-text);
+      }
+
+      .breadcrumb-item.active {
+        color: var(--primary-color);
+      }
+
+      .breadcrumb-item + .breadcrumb-item::before {
+        color: var(--light-text);
+      }
+
+      .about-vision {
+        background-color: var(--light-color);
+      }
+
+      .vision-box {
+        background-color: #fff;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: var(--box-shadow);
+        height: 100%;
+        text-align: center;
+        transition: var(--transition);
+      }
+
+      .vision-box:hover {
+        transform: translateY(-10px);
+      }
+
+      .vision-icon {
+        width: 80px;
+        height: 80px;
+        background-color: var(--primary-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        margin: 0 auto 20px;
+      }
+
+      .vision-icon i {
+        color: var(--light-text);
+        font-size: 36px;
+      }
+
+      .vision-box h3 {
+        margin-bottom: 15px;
+        font-size: 24px;
+        color: var(--dark-color);
+      }
+
+      .section-title h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #0070c0; /* Use your main color or var(--primary-color) */
+        position: relative;
+        padding-bottom: 15px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .section-title h2::after {
+        content: "";
+        display: block;
+        margin: 0 auto;
+        margin-top: 8px;
+        width: 80px;
+        height: 4px;
+        background-color: #ff9800; /* Use your accent color or var(--accent-color) */
+        border-radius: 2px;
+      }
+
+      /* Footer */
+      .footer {
+        background: #343a40 !important;
+        color: #bbb;
+        padding: 60px 0 0 0;
+      }
+
+      .footer-about,
+      .footer-links,
+      .footer-contact {
+        background: transparent !important;
+      }
+
+      .footer h4 {
+        color: #fff;
+        margin-bottom: 20px;
+        font-size: 20px;
+        position: relative;
+        padding-bottom: 10px;
+      }
+
+      .footer h4::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 2px;
+        background-color: #ff9800;
+      }
+
+      .footer-about img {
+        max-width: 150px;
+        margin-bottom: 20px;
+      }
+
+      .footer-about p {
+        margin-bottom: 20px;
+        font-size: 15px;
+        color: #bbb;
+      }
+
+      .footer-social a {
+        display: inline-block;
+        margin-right: 10px;
+        color: #bbb;
+        font-size: 18px;
+        transition: color 0.3s, transform 0.3s;
+      }
+
+      .footer-social a:hover {
+        color: #ff9800;
+        transform: translateY(-3px) scale(1.15);
+      }
+
+      .footer-links ul {
+        padding: 0;
+        list-style: none;
+      }
+
+      .footer-links ul li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links ul li a {
+        color: #bbb;
+        text-decoration: none;
+        transition: color 0.3s;
+        font-size: 15px;
+      }
+
+      .footer-links ul li a:hover {
+        color: #ff9800;
+      }
+
+      .footer-links ul li i {
+        margin-right: 8px;
+        color: #ff9800;
+      }
+
+      .footer-links a {
+        color: #bbb;
+        text-decoration: none;
+        transition: color 0.3s ease, padding-left 0.3s ease;
+        display: block;
+      }
+
+      .footer-links a:hover {
+        color: white;
+        padding-left: 5px;
+      }
+
+      .footer-links a i {
+        margin-right: 10px;
+        color: var(--accent-color);
+      }
+
+      .footer-contact p {
+        margin-bottom: 10px;
+        font-size: 15px;
+        color: #bbb;
+      }
+
+      .footer-contact i {
+        margin-right: 8px;
+        color: #ff9800;
+      }
+
+      .footer-bottom {
+        background: #23272b;
+        color: #bbb;
+        padding: 15px 0;
+        margin-top: 30px;
+        font-size: 14px;
+        text-align: center;
+      }
+
+      .btn-warning {
+        background-color: #ff9800 !important;
+        border-color: #ff9800 !important;
+        color: #fff !important;
+      }
+
+      .btn-warning:hover,
+      .btn-warning:focus {
+        background-color: #e67e22 !important;
+        border-color: #e67e22 !important;
+        color: #fff !important;
+      }
+
+      .navbar-nav .nav-link {
+        color: #e68a1c; /* Your desired color */
+        font-weight: 500;
+        padding: 10px 15px;
+        transition: color 0.3s ease;
+        margin-right: 30px;
+      }
+
+      .navbar-nav .nav-link:hover,
+      .navbar-nav .nav-link.active {
+        color: #0070c0; /* Or another color for hover/active */
+      }
+
+
+
+  /* Floating WhatsApp Button */
+/* WhatsApp Button with Online Indicator */
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.whatsapp-button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  overflow: visible;
+  cursor: pointer;
+}
+
+.profile-image-container {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+
+.whatsapp-button-img, .chat-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.online-indicator {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 15px;
+  height: 15px;
+  background-color: #4CAF50;
+  border-radius: 50%;
+  border: 2px solid white;
+  z-index: 10;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* Rest of your existing WhatsApp styles... */
+
+
+/* WhatsApp Services Box */
+
+
+/* WhatsApp Services Box */
+.whatsapp-services {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  width: 280px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  padding: 15px;
+  gap: 10px;
+}
+
+/* Text title */
+.whatsapp-services p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Checkbox Style as Pills */
+.whatsapp-services label {
+  display: flex;
+  align-items: center;
+  border: 2px solid #25d366;
+  border-radius: 25px;
+  padding: 10px 15px;
+  color: #25d366;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.whatsapp-services label:hover {
+  background-color: #eafaf1;
+}
+
+.whatsapp-services input[type="checkbox"] {
+  display: none;
+}
+
+.whatsapp-services input[type="checkbox"]:checked + span {
+  background-color: #25d366;
+  color: white;
+  border-radius: 20px;
+  padding: 8px 12px;
+}
+
+/* Confirm Button */
+.whatsapp-services button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #25d366;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.chat-avatar {
+  width: 60px;      /* Same as WhatsApp button */
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 12px;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.chat-bubble {
+  background-color: #f1f1f1;
+  padding: 12px 16px;
+  border-radius: 16px;
+  max-width: 200px;
+  font-size: 14px;
+  line-height: 1.4;
+  position: relative;
+}
+
+.chat-bubble::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: -8px;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid #f1f1f1;
+}
+
+
+
+
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Contact Us</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarResponsive"
+          aria-controls="navbarResponsive"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="services.html">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="news.html">News</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="contact.html">Contact</a>
+              
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="medicine.html">Pharmacy</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- About Header -->
+    <section class="about-header">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <h1 class="animate__animated animate__fadeInDown">Contact Us</h1>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb animate__animated animate__fadeInUp">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Contact Us
+                </li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+    <br /><br />
+    <!-- Contact Section -->
+    <section class="contact-section" style="padding: 100px 0">
+      <div class="container">
+        <div class="section-title"></div>
+        <div class="section-title text-center mb-5">
+          <h2>Contact Us</h2>
+          <p>
+            We are here to assist you with any inquiries or support you need.
+          </p>
+        </div>
+        <div class="row">
+          <!-- Contact Information -->
+          <div class="col-lg-6">
+            <div class="contact-info bg-primary text-white p-4 rounded">
+              <h3 class="mb-4">Telemedicine</h3>
+              <h5>Contact Information</h5>
+              <p>
+                <i class="fas fa-map-marker-alt me-2"></i> Membly, Ruiru Eastern By-Pass
+              </p>
+              <p>
+                <i class="fas fa-envelope me-2"></i> info@hamathealthcare.com
+              </p>
+              <p><i class="fas fa-phone-alt me-2"></i> +254 721 600700</p>
+            </div>
+          </div>
+          <!-- Contact Form -->
+          <div class="col-lg-6">
+            <form class="contact-form bg-light p-4 rounded">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Name"
+                    required
+                  />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="Email"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Phone Number"
+                    required
+                  />
+                </div>
+                <div class="col-md-6 mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Service"
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <textarea
+                  class="form-control"
+                  rows="4"
+                  placeholder="How can we help you?"
+                  required
+                ></textarea>
+              </div>
+              <div class="row align-items-center">
+                  <button type="submit" class="btn btn-warning text-white px-4">
+                    Send Message
+                  </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Add this after your contact image -->
+    <div class="map-responsive mb-4">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d127648.05784526252!2d36.85589612571745!3d-1.1591775015172763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x182f41b36ae6357b%3A0xc1705b0554293e07!2sRWRQ%2B88F%20at%20the%20entrance%20of%2C%20Eastern%20Bypass%2C%20Ruiru!3m2!1d-1.1591787!2d36.9382981!5e0!3m2!1sen!2ske!4v1749017776528!5m2!1sen!2ske"
+        width="100%"
+        height="400"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+
+    <!--  WhatsApp Hover  -->
+    <div class="whatsapp-float">
+      <button class="whatsapp-button" id="whatsappToggle">
+        <div class="profile-image-container">
+          <img src="images/Tasneemphoto1.png" alt="Chat Icon" class="whatsapp-button-img">
+          <span class="online-indicator"></span>
+        </div>
+      </button>
+
+      <div class="whatsapp-services" id="whatsappServices">
+        <div class="chat-header">
+          <div class="profile-image-container">
+            <img src="images/Tasneemphoto1.png" alt="Profile" class="chat-avatar">
+            <span class="online-indicator"></span>
+          </div>
+          <div class="chat-bubble">Hi! How can we help you?</div>
+        </div>
+
+        <label><input type="checkbox" value="Laboratory"><span>Laboratory</span></label>
+        <label><input type="checkbox" value="Operation Theatre"><span>Operation Theatre</span></label>
+        <label><input type="checkbox" value="Geriatric Care"><span>Geriatric Care</span></label>
+        <label><input type="checkbox" value="Specialist Consultation"><span>Specialist Consultation</span></label>
+        <label><input type="checkbox" value="Home Care"><span>Home Care</span></label>
+        <label><input type="checkbox" value="Maternal Care"><span>Maternal Care</span></label>
+
+        <button id="whatsappConfirm">Confirm</button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-about">
+              <img
+                src="images/Logo.PNG"
+                alt="Hamat Healthcare Logo"
+                class="mb-4"
+              />
+              <p>
+                Hamat Healthcare is committed to providing quality healthcare
+                services to all our patients. Our team of experienced medical
+                professionals strives to ensure that you receive the best care
+                possible.
+              </p>
+              <div class="footer-social">
+                <a
+                  href="https://www.facebook.com/61565940900209"
+                  target="_blank"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a href="https://x.com/Hamatealthcare" target="_blank"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+                <a
+                  href="https://www.instagram.com/hamat_healthcare/"
+                  target="_blank"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+                <a
+                  href="https://www.linkedin.com/company/105089580/admin/dashboard/"
+                  target="_blank"
+                  ><i class="fab fa-linkedin-in"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-links">
+              <h4>Quick Links</h4>
+              <ul>
+                <li>
+                  <a href="index.html"
+                    ><i class="fas fa-angle-right"></i> Home</a
+                  >
+                </li>
+                <li>
+                  <a href="about.html"
+                    ><i class="fas fa-angle-right"></i> About Us</a
+                  >
+                </li>
+                <li>
+                  <a href="services.html"
+                    ><i class="fas fa-angle-right"></i> Services</a
+                  >
+                </li>
+                <li>
+                  <a href="news.html"><i class="fas fa-angle-right"></i>News</a>
+                </li>
+                <li>
+                  <a href="contact.html"
+                    ><i class="fas fa-angle-right"></i> Contact Us</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-contact">
+              <h4>Contact Us</h4>
+              <p>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Membly, Ruiru Eastern By-Pass</span>
+              </p>
+              <p>
+                <i class="fas fa-phone-alt"></i>
+                <span>+254 721 600700</span>
+              </p>
+              <p>
+                <i class="fas fa-envelope"></i>
+                <span>info@hamathealthcare.com</span>
+              </p>
+              <p>
+                <i class="fas fa-clock"></i>
+                <span>Opening Hours: Mon-Sun 24/7</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p>© 2025 Hamat Healthcare. All Rights Reserved.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <!--  WhatsApp Script   -->
+    <script>
+      const toggleBtn = document.getElementById('whatsappToggle');
+      const servicesBox = document.getElementById('whatsappServices');
+      const confirmBtn = document.getElementById('whatsappConfirm');
+
+      // Toggle service box
+      toggleBtn.addEventListener('click', () => {
+        servicesBox.style.display = servicesBox.style.display === 'flex' ? 'none' : 'flex';
+      });
+
+      // Close on outside click
+      document.addEventListener('click', function (e) {
+        if (!toggleBtn.contains(e.target) && !servicesBox.contains(e.target)) {
+          servicesBox.style.display = 'none';
+        }
+      });
+
+      // Confirm selection
+      confirmBtn.addEventListener('click', () => {
+        const selected = Array.from(servicesBox.querySelectorAll('input[type="checkbox"]:checked'))
+                .map(cb => cb.value)
+                .join(', ');
+        if (selected) {
+          const phone = "254713024918";
+          const message = encodeURIComponent(`I am interested in: ${selected}`);
+          window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+        } else {
+          alert("Please select at least one service.");
+        }
+      });
+    </script>
+  </body>
+</html>

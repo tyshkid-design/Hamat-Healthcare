@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Order Medicines | Hamat Healthcare</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome 6 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --primary: #0065b3;
+      --secondary: #f7941d;
+      --whatsapp: #25d366;
+      --light: #f8f9fa;
+      --dark: #343a40;
+      --gray: #6c757d;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #f9f9f9;
+      color: var(--dark);
+    }
+
+    /* Top Info Bar */
+    .topbar {
+      background: #0666b3;
+      color: #fff;
+      font-size: 15px;
+      padding: 0.3rem 0;
+    }
+    .container-topbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 15px;
+    }
+    .topbar-left span, .topbar-right span {
+      margin: 0 10px;
+      white-space: nowrap;
+    }
+    .topbar-left i, .topbar-right i {
+      width: 18px;
+      text-align: center;
+      margin-right: 8px;
+      color: #ff9800;
+    }
+
+    /* Main Navbar */
+    .main-navbar {
+      background: white;
+      padding: 15px 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .container-navbar {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 15px;
+    }
+    .navbar-logo img {
+      height: 60px;
+    }
+    .navbar-links {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+      gap: 20px;
+    }
+    .navbar-links a {
+      text-decoration: none;
+      color: #e68a1c;
+      font-weight: 500;
+      padding: 10px 15px;
+      transition: color 0.3s ease;
+      margin-right: 30px;
+    }
+    .navbar-links a:hover,
+    .navbar-links a.active {
+      color: #0070c0;
+    }
+    .navbar-btn {
+      background-color: #ffa726;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+    .navbar-btn:hover {
+      background-color: #e67e22;
+      color: white;
+    }
+
+    /* Section Title */
+    .section-title h4 {
+      color: var(--primary);
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+    .section-title h1 {
+      color: var(--dark);
+      font-weight: 600;
+    }
+
+    /* Frequently Inquired Categories */
+    .freq-item {
+      background: white;
+      border: 2px solid var(--primary);
+      border-radius: 25px;
+      padding: 12px 16px;
+      text-align: center;
+      font-weight: 500;
+      color: var(--primary);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .freq-item:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Category Cards */
+    .category-card {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
+    .category-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 101, 179, 0.15);
+    }
+    .category-card-img {
+      height: 180px;
+      overflow: hidden;
+    }
+    .category-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .category-card:hover .category-card-img img {
+      transform: scale(1.1);
+    }
+    .category-card-body {
+      padding: 20px;
+    }
+    .category-card-body h5 {
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .category-card-body p {
+      color: var(--gray);
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+    .btn-category {
+      background-color: var(--whatsapp);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      width: 100%;
+      transition: 0.2s;
+    }
+    .btn-category:hover {
+      background-color: #128c7e;
+      transform: translateY(-2px);
+    }
+
+    /* Prescription Form */
+    .prescription-form {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      margin: 50px 0;
+    }
+    .prescription-form .form-floating label {
+      color: var(--gray);
+    }
+    .prescription-form .form-control {
+      border-radius: 8px;
+      padding: 12px;
+    }
+    .btn-upload {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: 500;
+      width: 100%;
+      margin-top: 15px;
+      transition: 0.2s ease;
+    }
+    .btn-upload:hover {
+      background-color: #005699;
+    }
+
+    /* WhatsApp Order Section */
+    .whatsapp-order-section {
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      margin: 60px 0;
+    }
+    .whatsapp-order-icon {
+      font-size: 40px;
+      color: var(--whatsapp);
+      margin-bottom: 15px;
+    }
+    .whatsapp-order-title {
+      font-size: 1.5rem;
+      color: var(--dark);
+      font-weight: 600;
+    }
+    .whatsapp-order-desc {
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
+    .btn-whatsapp-order {
+      background-color: var(--whatsapp);
+      color: white;
+      padding: 12px 30px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-block;
+      transition: 0.2s;
+    }
+    .btn-whatsapp-order:hover {
+      background-color: #128c7e;
+      transform: translateY(-2px);
+    }
+
+    /* Floating WhatsApp Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+    }
+    .whatsapp-button {
+      background: transparent;
+      border: none;
+      padding: 0;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .whatsapp-button:hover {
+      transform: scale(1.1);
+    }
+    .whatsapp-button-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .whatsapp-icon {
+      font-size: 30px;
+      color: white;
+    }
+    .online-indicator {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      width: 12px;
+      height: 12px;
+      background-color: #4CAF50;
+      border-radius: 50%;
+      border: 2px solid white;
+      z-index: 10;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    /* WhatsApp Services Popup */
+    .whatsapp-services {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      bottom: 70px;
+      right: 0;
+      width: 280px;
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      padding: 15px;
+      gap: 10px;
+    }
+    .whatsapp-services p {
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: var(--dark);
+    }
+    .whatsapp-services label {
+      display: flex;
+      align-items: center;
+      border: 2px solid var(--whatsapp);
+      border-radius: 25px;
+      padding: 10px 15px;
+      color: var(--whatsapp);
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .whatsapp-services label:hover {
+      background-color: #eafaf1;
+    }
+    .whatsapp-services input[type="checkbox"] {
+      display: none;
+    }
+    .whatsapp-services input[type="checkbox"]:checked + span {
+      background-color: var(--whatsapp);
+      color: white;
+      border-radius: 20px;
+      padding: 8px 12px;
+    }
+    .whatsapp-services button {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: var(--whatsapp);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--dark);
+      color: white;
+      padding: 50px 0 20px;
+    }
+    .footer-about img {
+      max-height: 60px;
+      margin-bottom: 15px;
+    }
+    .footer-contact i {
+      margin-right: 15px;
+      color: var(--secondary);
+    }
+    .footer-bottom {
+      background-color: rgba(0,0,0,0.2);
+      padding: 20px 0;
+      margin-top: 60px;
+      text-align: center;
+    }
+    .footer-bottom p {
+      margin-bottom: 0;
+      color: #bbb;
+      font-size: 0.9rem;
+    }
+    .footer-social a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: #444;
+      border-radius: 50%;
+      color: white;
+      margin-right: 10px;
+      transition: all 0.3s ease;
+    }
+    .footer-social a:hover {
+      background: var(--secondary);
+      transform: translateY(-3px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container-topbar">
+      <div class="topbar-left">
+        <span><i class="fas fa-phone-alt"></i> Call Us: +254 713 024 918</span>
+        <span><i class="fas fa-envelope"></i> info@hamathealthcare.com</span>
+      </div>
+      <div class="topbar-right">
+        <span><i class="fas fa-clock"></i> Opening Hours: Mon-Sun 24/7</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navbar -->
+  <nav class="main-navbar">
+    <div class="container-navbar">
+      <a class="navbar-logo" href="index.html">
+        <img src="images/Logo.PNG" alt="Hamat Healthcare Logo" />
+      </a>
+      <ul class="navbar-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="contact.html">Contacts</a></li>
+        <li><a href="medicine.html" class="active">Pharmacy</a></li>
+      </ul>
+      <a href="https://wa.me/254713024918?text=Hello%20Hamat%20Healthcare,%20I%20would%20like%20to%20book%20an%20appointment." class="navbar-btn" target="_blank">Book Appointment</a>
+    </div>
+  </nav>
+
+  <!-- Pharmacy Section -->
+  <section class="medicine-section py-5">
+    <div class="container">
+      <div class="section-title mb-5 text-center">
+        <h4 class="text-primary">Order Medicines Online</h4>
+        <h1 class="display-3 mb-4">Fast, Reliable Pharmacy Service</h1>
+        <p class="mb-0">Browse our catalog or upload your prescription. We’ll confirm availability and arrange delivery or pickup.</p>
+      </div>
+
+      <!-- Compliance Disclaimer -->
+      <div class="alert alert-warning rounded-3 shadow-sm p-4" role="alert">
+        <h5 class="alert-heading">
+          <i class="fas fa-exclamation-triangle me-2 text-warning"></i> 
+          Important Legal & Medical Notice
+        </h5>
+        <hr class="my-3">
+        <p class="mb-0 small">
+          <strong>1. Not a Substitute:</strong> This service is for inquiry and information purposes only. It does not replace a consultation with a licensed healthcare provider.
+        </p>
+        <p class="mb-0 small mt-2">
+          <strong>2. Prescription Medicines:</strong> Under Kenyan law, prescription-only medicines require a valid prescription. All prescriptions are verified by a licensed pharmacist before processing.
+        </p>
+        <p class="mb-0 small mt-2">
+          <strong>3. Legal Compliance:</strong> Hamat Healthcare operates in accordance with the <em>Pharmacy and Poisons Act (Cap 244)</em> and PPB guidelines.
+        </p>
+        <p class="mb-0 small mt-2">
+          <strong>4. Privacy:</strong> Your information is handled per the <em>Data Protection Act, 2019</em>.
+        </p>
+        <p class="mb-0 small mt-2">
+          <strong>5. Delivery:</strong> Inquiries leading to supply: <strong>orders valued at KSh 2,000 and above qualify for free delivery</strong>.
+        </p>
+      </div>
+
+      <!-- Frequently Inquired Categories -->
+      <h3 class="mt-5">Contact us on Whatsapp for the following Categories</h3>
+      <div class="row g-3 mb-5">
+        <div class="col-6 col-md-3"><div class="freq-item" onclick="inquireCategory('Painkillers')">Painkillers</div></div>
+        <div class="col-6 col-md-3"><div class="freq-item" onclick="inquireCategory('Antibiotics')">Antibiotics</div></div>
+        <div class="col-6 col-md-3"><div class="freq-item" onclick="inquireCategory('Diabetes')">Diabetes</div></div>
+        <div class="col-6 col-md-3"><div class="freq-item" onclick="inquireCategory('Hypertension')">Hypertension</div></div>
+        <div class="col-6 col-md-3"><div class="freq-item" onclick="inquireCategory('Joint & Muscle Care')">Joint & Muscle Care</div></div>
+        <div class="col-6 col-md-3"><div class="freq-item" onclick="inquireCategory('Vitamins & Supplements')">Vitamins & Supplements</div></div>
+        <div class="col-6 col-md-3"><div class="freq-item" onclick="inquireCategory('Pediatric Medicines')">Pediatric Medicines</div></div>
+        <div class="col-6 col-md-3"><div class="freq-item" onclick="inquireCategory('Skin & Allergy')">Skin & Allergy</div></div>
+      </div>
+
+      <!-- Category Cards -->
+      <!-- Category Cards -->
+<div class="row g-4">
+  <!-- Painkillers -->
+  <div class="col-md-6 col-lg-4 col-xl-3">
+    <div class="category-card">
+      <div class="category-card-img">
+        <img src="images/Painkillers.jpeg" alt="Painkillers">
+      </div>
+      <div class="category-card-body">
+        <h5>Painkillers</h5>
+        <p>For headaches, fever, and minor pain relief.</p>
+        <button class="btn-category" onclick="inquireCategory('Painkillers')">Inquire via WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Antibiotics -->
+  <div class="col-md-6 col-lg-4 col-xl-3">
+    <div class="category-card">
+      <div class="category-card-img">
+        <img src="images/Antibiotics.jpeg" alt="Antibiotics">
+      </div>
+      <div class="category-card-body">
+        <h5>Antibiotics</h5>
+        <p>For bacterial infections — requires valid prescription.</p>
+        <button class="btn-category" onclick="inquireCategory('Antibiotics')">Inquire via WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Diabetes -->
+  <div class="col-md-6 col-lg-4 col-xl-3">
+    <div class="category-card">
+      <div class="category-card-img">
+        <img src="images/Diabetes.jpeg" alt="Diabetes">
+      </div>
+      <div class="category-card-body">
+        <h5>Diabetes</h5>
+        <p>Insulin, blood sugar monitors, and oral medications.</p>
+        <button class="btn-category" onclick="inquireCategory('Diabetes')">Inquire via WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hypertension -->
+  <div class="col-md-6 col-lg-4 col-xl-3">
+    <div class="category-card">
+      <div class="category-card-img">
+        <img src="images/Hypertension.jpeg" alt="Hypertension">
+      </div>
+      <div class="category-card-body">
+        <h5>Hypertension</h5>
+        <p>Blood pressure medications and monitoring support.</p>
+        <button class="btn-category" onclick="inquireCategory('Hypertension')">Inquire via WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Joint & Muscle Care -->
+  <div class="col-md-6 col-lg-4 col-xl-3">
+    <div class="category-card">
+      <div class="category-card-img">
+        <img src="images/joint and muscle care.jpg" alt="Joint & Muscle Care">
+      </div>
+      <div class="category-card-body">
+        <h5>Joint & Muscle Care</h5>
+        <p>For arthritis, sprains, back pain, and inflammation.</p>
+        <button class="btn-category" onclick="inquireCategory('Joint & Muscle Care')">Inquire via WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vitamins & Supplements -->
+  <div class="col-md-6 col-lg-4 col-xl-3">
+    <div class="category-card">
+      <div class="category-card-img">
+        <img src="images/vitamins annd supplements.jpeg" alt="Vitamins & Supplements">
+      </div>
+      <div class="category-card-body">
+        <h5>Vitamins & Supplements</h5>
+        <p>Boost immunity, energy, and overall wellness.</p>
+        <button class="btn-category" onclick="inquireCategory('Vitamins & Supplements')">Inquire via WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pediatric Medicines -->
+  <div class="col-md-6 col-lg-4 col-xl-3">
+    <div class="category-card">
+      <div class="category-card-img">
+        <img src="images/pediatric.jpeg" alt="Pediatric Medicines">
+      </div>
+      <div class="category-card-body">
+        <h5>Pediatric Medicines</h5>
+        <p>Safe and accurate dosing for children and infants.</p>
+        <button class="btn-category" onclick="inquireCategory('Pediatric Medicines')">Inquire via WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Skin & Allergy -->
+  <div class="col-md-6 col-lg-4 col-xl-3">
+    <div class="category-card">
+      <div class="category-card-img">
+        <img src="images/skin and allergy.jpeg" alt="Skin & Allergy">
+      </div>
+      <div class="category-card-body">
+        <h5>Skin & Allergy</h5>
+        <p>For eczema, rashes, allergies, and dermatological care.</p>
+        <button class="btn-category" onclick="inquireCategory('Skin & Allergy')">Inquire via WhatsApp</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <!-- Prescription Upload -->
+      <div class="prescription-form mt-5">
+        <h3 class="text-center mb-4">Upload Your Prescription</h3>
+        <p class="text-center mb-4">Submit your prescription and we’ll prepare your order for review.</p>
+        <form id="prescriptionForm" onsubmit="submitPrescription(event)">
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="patientName" placeholder="Patient Name" required>
+                <label for="patientName">Patient Name</label>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-floating">
+                <input type="tel" class="form-control" id="patientPhone" placeholder="Phone Number" required>
+                <label for="patientPhone">Phone Number</label>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-floating">
+                <textarea class="form-control" id="medicinesList" placeholder="List of Medicines" rows="3"></textarea>
+                <label for="medicinesList">List of Medicines (Optional)</label>
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="prescriptionImage" class="form-label">Upload Prescription (Image or PDF)</label>
+              <input type="file" class="form-control" id="prescriptionImage" accept="image/*,.pdf">
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn-upload">Submit for Review</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Order by WhatsApp -->
+      <section class="container">
+        <div class="whatsapp-order-section">
+          <div class="whatsapp-order-icon">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+          <h3 class="whatsapp-order-title">Can't Find Your Medicine?</h3>
+          <p class="whatsapp-order-desc">
+            No problem! Send us a message directly on WhatsApp. We’ll check availability, advise on alternatives, and arrange delivery.
+          </p>
+          <a href="https://wa.me/254713024918?text=Hello%20Hamat%20Healthcare,%20I%20would%20like%20to%20inquire%20about%20a%20medicine." 
+             class="btn-whatsapp-order" target="_blank">
+            <i class="fab fa-whatsapp"></i> Inquire via WhatsApp
+          </a>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-about">
+            <img src="images/Logo.PNG" alt="Hamat Healthcare Logo" class="mb-4">
+            <p>Your trusted partner in healthcare, providing quality services for every stage of life in Ruiru and beyond.</p>
+            <div class="footer-social mt-4">
+              <a href="https://facebook.com/hamathealthcare"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://twitter.com/hamathealthcare"><i class="fab fa-twitter"></i></a>
+              <a href="https://instagram.com/hamathealthcare"><i class="fab fa-instagram"></i></a>
+              <a href="https://linkedin.com/company/hamathealthcare"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <h5 class="text-white mb-4">Quick Links</h5>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="index.html" class="text-light text-decoration-none">Home</a></li>
+            <li class="mb-2"><a href="about.html" class="text-light text-decoration-none">About Us</a></li>
+            <li class="mb-2"><a href="services.html" class="text-light text-decoration-none">Services</a></li>
+            <li class="mb-2"><a href="medicine.html" class="text-light text-decoration-none">Pharmacy</a></li>
+            <li class="mb-2"><a href="news.html" class="text-light text-decoration-none">News</a></li>
+            <li class="mb-2"><a href="contact.html" class="text-light text-decoration-none">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <h5 class="text-white mb-4">Contact Us</h5>
+          <p class="footer-contact">
+            <i class="fas fa-map-marker-alt"></i> Membly, Ruiru Eastern By-Pass
+          </p>
+          <p class="footer-contact">
+            <i class="fas fa-envelope"></i> info@hamathealthcare.com
+          </p>
+          <p class="footer-contact">
+            <i class="fas fa-phone"></i> +254 713 024 918
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Hamat Healthcare. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <div class="whatsapp-float">
+    <button class="whatsapp-button" id="whatsappToggle">
+      <div class="whatsapp-button-container">
+        <i class="fab fa-whatsapp whatsapp-icon"></i>
+        <span class="online-indicator"></span>
+      </div>
+    </button>
+    <div class="whatsapp-services" id="whatsappServices">
+      <p>How can we help you?</p>
+      <label><input type="checkbox" value="Laboratory"><span>Laboratory</span></label>
+      <label><input type="checkbox" value="Operation Theatre"><span>Operation Theatre</span></label>
+      <label><input type="checkbox" value="Geriatric Care"><span>Geriatric Care</span></label>
+      <label><input type="checkbox" value="Specialist Consultation"><span>Specialist Consultation</span></label>
+      <label><input type="checkbox" value="Home Care"><span>Home Care</span></label>
+      <label><input type="checkbox" value="Maternal Care"><span>Maternal Care</span></label>
+      <button id="whatsappConfirm">Confirm</button>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom JavaScript -->
+  <script>
+    // WhatsApp Floating Button
+    const toggleBtn = document.getElementById('whatsappToggle');
+    const servicesBox = document.getElementById('whatsappServices');
+    const confirmBtn = document.getElementById('whatsappConfirm');
+
+    toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      servicesBox.style.display = servicesBox.style.display === 'flex' ? 'none' : 'flex';
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!toggleBtn.contains(e.target) && !servicesBox.contains(e.target)) {
+        servicesBox.style.display = 'none';
+      }
+    });
+
+    confirmBtn.addEventListener('click', () => {
+      const selected = Array.from(servicesBox.querySelectorAll('input[type="checkbox"]:checked'))
+                           .map(cb => cb.value).join(', ');
+      if (selected) {
+        const phone = "254713024918";
+        const message = encodeURIComponent(`Hello Hamat Healthcare, I'm interested in: ${selected}. Please assist.`);
+        window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+        servicesBox.style.display = 'none';
+      } else {
+        alert("Please select at least one service.");
+      }
+    });
+
+    // Inquire About Category
+    function inquireCategory(category) {
+      const phone = "254713024918";
+      const message = encodeURIComponent(`Hello Hamat Healthcare, I would like to inquire about: ${category}. Please share available options, pricing, and whether a prescription is needed. Thank you!`);
+      window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+    }
+
+    // Submit Prescription via WhatsApp
+    function submitPrescription(event) {
+      event.preventDefault();
+      const name = document.getElementById('patientName').value;
+      const phone = document.getElementById('patientPhone').value;
+      const medicines = document.getElementById('medicinesList').value;
+      const fileInput = document.getElementById('prescriptionImage');
+      const fileName = fileInput.files.length > 0 ? fileInput.files[0].name : 'No file uploaded';
+
+      const message = encodeURIComponent(`Hello Hamat Healthcare, Prescription Submission:\n- Patient: ${name}\n- Phone: ${phone}\n- Medicines: ${medicines}\n- Prescription File: ${fileName}\nPlease review and contact me for next steps. Thank you!`);
+      
+      window.open(`https://wa.me/254713024918?text=${message}`, '_blank');
+    }
+  </script>
+</body>
+</html>
