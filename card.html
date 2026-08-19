@@ -1035,7 +1035,7 @@
             <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
             <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
             <li class="nav-item"><a class="nav-link" href="news.html">News</a></li>
-            <li class="nav-item"><a class="nav-link" href="contact.html">Contacts</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Talk To Us</a></li>
             <li class="nav-item"><a class="nav-link" href="pharmacy.html">Pharmacy</a></li>
             <li class="nav-item"><a class="nav-link active" href="card.html">Hamat Card</a></li>
           </ul>
@@ -1064,17 +1064,22 @@
             </div>
             <div class="sc-hero-stat">
               <div>
-                <div class="sc-hero-stat-num">1k+</div>
-                <div class="sc-hero-stat-label">Cardholders</div>
-              </div>
-              <div class="sc-hero-stat-divider"></div>
-              <div>
-                <div class="sc-hero-stat-num">30%</div>
+                <div class="sc-hero-stat-num">10%</div>
                 <div class="sc-hero-stat-label">Pharmacy Discount</div>
               </div>
               <div class="sc-hero-stat-divider"></div>
               <div>
-                <div class="sc-hero-stat-num">10 min</div>
+                <div class="sc-hero-stat-num">20%</div>
+                <div class="sc-hero-stat-label">Maternity Care</div>
+              </div>
+              <div class="sc-hero-stat-divider"></div>
+              <div>
+                <div class="sc-hero-stat-num">30%</div>
+                <div class="sc-hero-stat-label">Operational / Theatre</div>
+              </div>
+              <div class="sc-hero-stat-divider"></div>
+              <div>
+                <div class="sc-hero-stat-num">3 min</div>
                 <div class="sc-hero-stat-label">To Register</div>
               </div>
             </div>
@@ -1342,8 +1347,8 @@
           <div class="col-lg-4 col-md-6 sc-reveal sc-d1">
             <div class="price-sc-card">
               <div class="price-sc-plan">Basic</div>
-              <div class="price-sc-amount">KSh 200</div>
-              <div class="price-sc-period">/month</div>
+              <div class="price-sc-amount"></div>
+              <div class="price-sc-period"></div>
               <div class="price-sc-divider"></div>
               <ul class="price-sc-features">
                 <li>Priority outpatient access</li>
@@ -1351,7 +1356,7 @@
                 <li>Digital health card</li>
                 <li>Emergency ID</li>
               </ul>
-              <a href="contact.html" class="btn btn-outline-primary w-100">Get Started</a>
+          
             </div>
           </div>
 
@@ -1359,8 +1364,8 @@
             <div class="price-sc-card featured">
               <div class="price-sc-popular">Most Popular</div>
               <div class="price-sc-plan featured">Plus</div>
-              <div class="price-sc-amount">KSh 400</div>
-              <div class="price-sc-period">/month</div>
+              <div class="price-sc-amount">KSh 1000</div>
+              <div class="price-sc-period"></div>
               <div class="price-sc-divider"></div>
               <ul class="price-sc-features">
                 <li>All Basic features</li>
@@ -1369,15 +1374,15 @@
                 <li>Emergency fast-track cover</li>
                 <li>SMS health reminders</li>
               </ul>
-              <a href="contact.html" class="btn btn-primary w-100">Get Plus</a>
+              
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 sc-reveal sc-d3">
             <div class="price-sc-card">
               <div class="price-sc-plan">Family Plan</div>
-              <div class="price-sc-amount">KSh 700</div>
-              <div class="price-sc-period">/month</div>
+              <div class="price-sc-amount"></div>
+              <div class="price-sc-period"></div>
               <div class="price-sc-divider"></div>
               <ul class="price-sc-features">
                 <li>Covers you + 3 family members</li>
@@ -1385,13 +1390,13 @@
                 <li>2 free consultations/month</li>
                 <li>All Plus features</li>
               </ul>
-              <a href="contact.html" class="btn btn-outline-primary w-100">Get Family</a>
+              
             </div>
           </div>
         </div>
 
         <p class="price-sc-note sc-reveal">
-          &#128205; Register at Hamat Hospital reception &nbsp;&middot;&nbsp; USSD: <strong style="color:#0065b3;">*384#</strong> &nbsp;&middot;&nbsp; &#127760; hamathealthcare.com/card
+          &#128205; Register at Hamat Hospital reception &nbsp;&middot;&nbsp; &#127760; hamathealthcare.com/card
         </p>
       </div>
     </section>
@@ -1409,7 +1414,7 @@
           your Hamat Smart Card today.
         </p>
         <div class="sc-reveal">
-          <a href="contact.html" class="btn btn-primary btn-lg px-4">Get Your Card Now</a>
+          <button type="button" class="btn btn-primary btn-lg px-4" onclick="openCardForm()">Get Your Card Now</button>
         </div>
 
         <div class="cta-info-row sc-reveal">
@@ -1417,11 +1422,6 @@
             <div class="cta-tile-icon">&#128205;</div>
             <div class="cta-tile-label">Hamat Hospital</div>
             <div class="cta-tile-val">Membly, Ruiru Eastern By-Pass</div>
-          </div>
-          <div class="cta-info-tile">
-            <div class="cta-tile-icon">&#128241;</div>
-            <div class="cta-tile-label">USSD Code</div>
-            <div class="cta-tile-val" style="font-weight:700;color:#ffc98a;">*384#</div>
           </div>
           <div class="cta-info-tile">
             <div class="cta-tile-icon">&#127760;</div>
@@ -1677,9 +1677,101 @@
 
     <button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 
+    <!-- Card Registration Modal -->
+    <div id="cardFormModal" style="display:none;position:fixed;inset:0;z-index:1050;background:rgba(0,0,0,0.55);align-items:center;justify-content:center;padding:20px;">
+      <div style="background:#fff;border-radius:14px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,0.25);position:relative;">
+        <div style="padding:22px 24px 0;display:flex;justify-content:space-between;align-items:center;">
+          <h3 style="margin:0;font-weight:700;color:#00447a;">Hamat Smart Card Registration</h3>
+          <button onclick="closeCardForm()" style="background:none;border:none;font-size:1.4rem;cursor:pointer;color:#555;">&times;</button>
+        </div>
+        <form id="cardRegisterForm" style="padding:18px 24px 24px;">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">First Name</label>
+              <input type="text" id="firstName" class="form-control" placeholder="Enter first name" required />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Last Name</label>
+              <input type="text" id="lastName" class="form-control" placeholder="Enter last name" required />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">ID Number</label>
+              <input type="text" id="idNumber" class="form-control" placeholder="Enter ID number" required />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Phone Number</label>
+              <input type="tel" id="phoneNumber" class="form-control" placeholder="e.g. 07XXXXXXXX" required />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Email</label>
+              <input type="email" id="email" class="form-control" placeholder="Enter email address" required />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Card Type</label>
+              <select id="cardType" class="form-select" required>
+                <option value="">Select card type</option>
+                <option>Basic</option>
+                <option>Plus</option>
+                <option>Family Plan</option>
+              </select>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Which card do you prefer?</label>
+              <textarea id="cardPreference" class="form-control" rows="2" placeholder="Tell us which card you prefer and why"></textarea>
+            </div>
+          </div>
+          <div class="mt-3">
+            <button type="submit" class="btn btn-primary" style="width:100%;font-weight:700;">Register Now</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Success Popup -->
+    <div id="successPopup" style="display:none;position:fixed;inset:0;z-index:1100;background:rgba(0,0,0,0.6);align-items:center;justify-content:center;padding:20px;">
+      <div style="background:#fff;border-radius:14px;width:100%;max-width:400px;padding:28px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+        <div style="width:64px;height:64px;border-radius:50%;background:#d4edda;color:#155724;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 16px;">✓</div>
+        <h3 style="font-weight:700;color:#00447a;margin-bottom:8px;">Registration Successful</h3>
+        <p style="color:#555;margin-bottom:20px;">Thank you for registering. We will contact you shortly with next steps.</p>
+        <button onclick="closeSuccessPopup()" class="btn btn-primary" style="padding:10px 28px;border-radius:8px;border:none;font-weight:700;">OK</button>
+      </div>
+    </div>
+
     <script>
-      window.addEventListener('scroll', () => {
-        document.getElementById('backTop').classList.toggle('visible', window.scrollY > 400);
+      function openCardForm() {
+        const modal = document.getElementById('cardFormModal');
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+      function closeCardForm() {
+        const modal = document.getElementById('cardFormModal');
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+      function openSuccessPopup() {
+        document.getElementById('successPopup').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+      function closeSuccessPopup() {
+        document.getElementById('successPopup').style.display = 'none';
+        document.body.style.overflow = '';
+      }
+      document.getElementById('cardFormModal').addEventListener('click', function(e) {
+        if (e.target === this) closeCardForm();
+      });
+      document.getElementById('successPopup').addEventListener('click', function(e) {
+        if (e.target === this) closeSuccessPopup();
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          closeCardForm();
+          closeSuccessPopup();
+        }
+      });
+      document.getElementById('cardRegisterForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        closeCardForm();
+        setTimeout(openSuccessPopup, 250);
       });
     </script>
   </body>
