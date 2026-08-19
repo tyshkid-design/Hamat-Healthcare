@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DawaTrack Recap | Hamat Healthcare</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #0065b3;
+      --primary-dark: #00447a;
+      --accent: #f7941d;
+      --light-green: #d4edda;
+      --white: #ffffff;
+      --text: #333333;
+      --text-muted: #555555;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: var(--text);
+      background: var(--white);
+    }
+
+    .dawa-hero {
+      background: linear-gradient(rgba(0, 101, 179, 0.75), rgba(0, 101, 179, 0.75)), url('images/dawa.jpg') center/cover no-repeat;
+      color: var(--white);
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+
+    .dawa-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .dawa-hero p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .dawa-section {
+      padding: 60px 0;
+    }
+
+    .dawa-section.alt {
+      background: var(--light-green);
+    }
+
+    .section-tag {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+    }
+
+    .section-sub {
+      color: var(--text-muted);
+      max-width: 600px;
+      font-size: 1rem;
+    }
+
+    .feature-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 28px;
+      height: 100%;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .feature-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--primary);
+      color: var(--white);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+
+    .feature-card h4 {
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+      color: var(--primary-dark);
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+
+    .step-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 28px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      position: relative;
+    }
+
+    .step-num {
+      width: 44px;
+      height: 44px;
+      background: var(--primary);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+      margin: 0 auto 16px;
+    }
+
+    .step-card h4 {
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+      color: var(--primary-dark);
+    }
+
+    .step-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 0;
+    }
+
+    .care-item {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      margin-bottom: 16px;
+    }
+
+    .care-item .badge-type {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .badge-praise { background: #d1fae5; color: #065f46; }
+    .badge-advice { background: #dbeafe; color: #1e40af; }
+    .badge-urgent { background: #fee2e2; color: #991b1b; }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      height: 100%;
+    }
+
+    .testimonial-card p {
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .testimonial-card .author {
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-top: 12px;
+      margin-bottom: 2px;
+    }
+
+    .testimonial-card .role {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: var(--white);
+      padding: 60px 0;
+      text-align: center;
+      border-radius: 16px;
+      margin: 40px auto;
+      max-width: 1100px;
+    }
+
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .cta-section p {
+      opacity: 0.9;
+      margin-bottom: 24px;
+    }
+
+    .btn-white {
+      background: var(--white);
+      color: var(--primary);
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.2s;
+    }
+
+    .btn-white:hover {
+      transform: translateY(-2px);
+      color: var(--primary-dark);
+    }
+
+    .btn-outline-white {
+      border: 2px solid var(--white);
+      color: var(--white);
+      padding: 10px 26px;
+      border-radius: 30px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: 10px;
+      transition: background 0.2s;
+    }
+
+    .btn-outline-white:hover {
+      background: rgba(255,255,255,0.1);
+      color: var(--white);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+      margin-bottom: 16px;
+    }
+
+    footer {
+      background: #f8f9fa;
+      padding: 30px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .back-top {
+      position: fixed;
+      bottom: 96px;
+      right: 24px;
+      background: #0065b3;
+      color: #fff;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s;
+      z-index: 800;
+      border: none;
+      cursor: pointer;
+    }
+
+    .back-top.visible {
+      opacity: 1;
+      pointer-events: all;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container mt-4">
+    <a href="about.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to About</a>
+  </div>
+
+  <section class="dawa-hero" data-aos="fade-in">
+    <div class="container" data-aos="zoom-in" data-aos-delay="100">
+      <h1>DawaTrack — Smart Medication Intelligence</h1>
+      <p>Medicine that knows when you need it most. DawaTrack connects patients and doctors through real-time medication tracking, smart adherence analytics, and a care feed that keeps everyone aligned.</p>
+    </div>
+  </section>
+
+  <section class="dawa-section" data-aos="fade-up">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <div class="section-tag">Why DawaTrack</div>
+        <h2 class="section-title">Built around the patient-doctor relationship</h2>
+        <p class="section-sub mx-auto">Every feature designed to close the gap between appointments and keep care continuous.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-pills"></i></div>
+            <h4>Medication Intelligence</h4>
+            <p>Real-time dose logging with pattern detection. Patients log every dose; doctors see the full picture instantly.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-rss"></i></div>
+            <h4>Live Care Feed</h4>
+            <p>Doctors send typed notes — praise, reminders, urgent alerts, clinical advice — directly to the patient's dashboard in real time.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+            <h4>Adherence Analytics</h4>
+            <p>7-day trend charts, risk flags, and per-patient adherence rates give clinicians everything they need at a glance.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-users"></i></div>
+            <h4>Role-Based Access</h4>
+            <p>Patients see only their data. Doctors see their full patient panel. No crossover, no confusion, no privacy risk.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-bell"></i></div>
+            <h4>Instant Risk Alerts</h4>
+            <p>When adherence drops below threshold, doctors are flagged immediately — enabling proactive intervention.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-hospital"></i></div>
+            <h4>EHR-Ready Integration</h4>
+            <p>Plug into existing hospital systems via HL7/FHIR standards. Minimal disruption, maximum value from day one.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dawa-section alt" data-aos="fade-up">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <div class="section-tag">Process</div>
+        <h2 class="section-title">Up and running in 3 steps</h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+          <div class="step-card">
+            <div class="step-num">01</div>
+            <h4>Partner Registration</h4>
+            <p>Your hospital joins the DawaTrack network with a simple onboarding — typically done in one business day.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="150">
+          <div class="step-card">
+            <div class="step-num">02</div>
+            <h4>Patient Enrollment</h4>
+            <p>Patients receive secure login credentials and start logging medications from any device immediately.</p>
+          </div>
+        </div>
+        <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="step-card">
+            <div class="step-num">03</div>
+            <h4>Continuous Intelligence</h4>
+            <p>Doctors monitor adherence live, send notes through the care feed, and intervene before issues escalate.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dawa-section" data-aos="fade-up">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <div class="section-tag">The Care Feed</div>
+        <h2 class="section-title">Doctors talk. Patients listen — instantly.</h2>
+        <p class="section-sub mx-auto">When a doctor leaves a note on a patient's medication log, it appears in the patient's Care Feed within seconds.</p>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <div class="care-item" data-aos="fade-left" data-aos-delay="0">
+            <span class="badge-type badge-praise">🌟 Great News · Praise</span>
+            <p class="mb-1">Excellent work this week! 5 out of 6 doses taken. Your blood sugar management is improving.</p>
+            <small class="text-muted">2h ago · Dr. David Mwangi</small>
+          </div>
+          <div class="care-item" data-aos="fade-left" data-aos-delay="150">
+            <span class="badge-type badge-advice">💊 Advice</span>
+            <p class="mb-1">Try taking Metformin with a full meal — this should reduce the nausea you mentioned.</p>
+            <small class="text-muted">Yesterday · Dr. David Mwangi</small>
+          </div>
+          <div class="care-item" data-aos="fade-left" data-aos-delay="300">
+            <span class="badge-type badge-urgent">⚠️ Urgent</span>
+            <p class="mb-1">Please refill your Vitamin D prescription before the weekend. I've sent a repeat to Nairobi Pharmacy.</p>
+            <small class="text-muted">3d ago · Dr. David Mwangi</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="dawa-section alt" data-aos="fade-up">
+    <div class="container">
+      <div class="text-center mb-5" data-aos="fade-up">
+        <div class="section-tag">Testimonials</div>
+        <h2 class="section-title">What our partners say</h2>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="0">
+          <div class="testimonial-card">
+            <p>"DawaTrack completely transformed how we follow up with chronic patients. Adherence improved by 40% within three months — the care feed is a game-changer."</p>
+            <div class="author">Dr. Tasneem Yamani</div>
+            <div class="role">Geriatric GP</div>
+          </div>
+        </div>
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="testimonial-card">
+            <p>"The real-time dashboard means I can catch missed doses before they become emergencies. Patients actually read the notes I send — they tell me so at appointments."</p>
+            <div class="author">Dr. Adnaan Mustafa</div>
+            <div class="role">Paediatric Intensivist</div>
+          </div>
+        </div>
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="testimonial-card">
+            <p>"Implementation took one day. The analytics already inform policy decisions across all six of our facilities. Worth every shilling."</p>
+            <div class="author">Dr. Hassan Bharmal</div>
+            <div class="role">General surgeon and endoscopist</div>
+          </div>
+        </div>
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="testimonial-card">
+            <p>"DawaTrack's follow-up system has reduced our no-show rates dramatically. Parents now get gentle reminders and clear instructions for their children."</p>
+            <div class="author">Nurse Karen</div>
+            <div class="role">Clinical officer, Cairo hospital</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container" data-aos="fade-up">
+    <div class="cta-section">
+      <h2>Ready to transform care?</h2>
+      <p>Join 200+ healthcare facilities already on DawaTrack.<br>Free onboarding · Dedicated support · Results within 30 days.</p>
+      <a href="https://wa.me/254794153677?text=Hello%20DawaTrack,%20I%20am%20interested%20in%20partnership" target="_blank" class="btn-white"><i class="fas fa-handshake"></i> Start Partnership</a>
+      <a href="https://dawatrack.memeyai.com" class="btn-outline-white" target="_blank">Try the Demo →</a>
+    </div>
+  </div>
+
+  <button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+  <footer>
+    <div class="container">
+      <p class="mb-1"><strong>DawaTrack</strong> — Strengthening patient-doctor relationships through intelligent medication tracking.</p>
+      <p class="mb-0">dawa@memeyai.com · +254 794153677 · Thome square/Ushindi east avenue</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+      offset: 80
+    });
+
+    window.addEventListener('scroll', () => {
+      document.getElementById('backTop').classList.toggle('visible', window.scrollY > 400);
+    });
+  </script>
+</body>
+</html>

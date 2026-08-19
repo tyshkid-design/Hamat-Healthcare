@@ -114,26 +114,90 @@
       }
       @media (max-width: 900px) {
         .container-navbar {
-          flex-direction: column;
-          align-items: flex-start;
+          flex-wrap: wrap;
           padding: 1rem 0.5rem;
         }
+        .navbar-logo {
+          flex: 1;
+        }
+        .navbar-toggle {
+          display: flex !important;
+        }
         .navbar-links {
-          margin: 10px 0;
-          flex-wrap: wrap;
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          margin: 10px 0 0 0;
+          padding: 10px 0;
+          border-top: 1px solid #eee;
+        }
+        .navbar-links.open {
+          display: flex;
         }
         .navbar-links li {
-          margin: 0 10px 8px 0;
+          margin: 6px 0;
         }
         .navbar-btn {
+          width: 100%;
+          text-align: center;
           margin: 10px 0 0 0;
         }
       }
-      .navbar {
-        font-weight: 500;
-        font-size: 1rem;
-        letter-spacing: 0.5px;
+      .navbar-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 5px;
       }
+      .navbar-toggle span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: #222;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+      }
+      .navbar-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      .navbar-toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+      .navbar-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+
+      /* ── BACK TO TOP ── */
+      .back-top {
+        position: fixed;
+        bottom: 96px;
+        right: 24px;
+        background: #0065b3;
+        color: #fff;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .3s;
+        z-index: 800;
+        border: none;
+        cursor: pointer;
+      }
+
+      .back-top.visible {
+        opacity: 1;
+        pointer-events: all;
+      }
+
       .navbar .btn-warning {
         background: #ffc107;
         color: #222;
@@ -444,7 +508,7 @@
           <span
             ><i class="fas fa-phone-alt"></i> Call Us: +254 721 600700</span
           >
-          <span><i class="fas fa-envelope"></i>info@hamathealthcare.com</span>
+          <span><a href="mailto:info@hamathealthcare.com"><i class="fas fa-envelope"></i>info@hamathealthcare.com</a></span>
         </div>
         <div class="topbar-right">
           <span><i class="fas fa-clock"></i> Opening Hours: Mon-Sun 24/7</span>
@@ -458,15 +522,20 @@
         <a class="navbar-logo" href="index.html">
           <img src="images/Logo.PNG" alt="Hamat Healthcare Logo" />
         </a>
-        <ul class="navbar-links">
+        <button class="navbar-toggle" id="navToggle" aria-label="Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="navbar-links" id="navLinks">
           <li><a href="index.html" >Home</a></li>
           <li><a href="about.html">About Us</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="news.html" class="active">News</a></li>
           <li><a href="contact.html">Contacts</a></li>
-          <li class="nav-item"><a class="nav-link active" href="card.html">Hamat Card</a></li>
+          <li class="nav-item"><a class="nav-link" href="card.html">Hamat Card</a></li>
         </ul>
-        <a href="#" class="navbar-btn">Book Appointment</a>
+        <a href="https://wa.me/254721600700?text=Hello%20Hamat%20Healthcare,%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" class="navbar-btn">Book Appointment</a>
       </div>
     </nav>
 
@@ -764,6 +833,22 @@
         } else {
           alert("Please select at least one service.");
         }
+      });
+    </script>
+    <script>
+      const navToggle = document.getElementById('navToggle');
+      const navLinks = document.getElementById('navLinks');
+      navToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+        navToggle.classList.toggle('active');
+      });
+    </script>
+
+    <button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+    <script>
+      window.addEventListener('scroll', () => {
+        document.getElementById('backTop').classList.toggle('visible', window.scrollY > 400);
       });
     </script>
   </body>

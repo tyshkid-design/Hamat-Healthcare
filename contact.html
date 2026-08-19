@@ -18,6 +18,101 @@
     />
     <link href="style.css" rel="stylesheet" />
     <style>
+      :root {
+        --primary-color: #0065b3;
+        --secondary-color: #00a0e3;
+        --accent-color: #f7941d;
+        --light-gray: #f8f9fa;
+        --dark-gray: #343a40;
+        --light-text: #ffffff;
+        --light-color: #f8f9fa;
+        --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: #333;
+      }
+
+      /* Top Navigation */
+      .top-bar {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 8px 0;
+        font-size: 14px;
+      }
+
+      .top-bar i {
+        color: var(--accent-color);
+        margin-right: 5px;
+      }
+
+      /* Main Navigation */
+      .navbar {
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        padding: 15px 0;
+      }
+
+      .navbar-brand img {
+        max-height: 60px;
+      }
+
+      .navbar-nav .nav-link {
+        color: var(--dark-gray);
+        font-weight: 500;
+        padding: 10px 15px;
+        transition: color 0.3s ease;
+        margin-right: 30px;
+      }
+
+      .navbar-nav .nav-link:hover,
+      .navbar-nav .nav-link.active {
+        color: var(--primary-color);
+      }
+
+      .navbar .btn-appointment {
+        background-color: var(--accent-color);
+        color: white;
+        border-radius: 30px;
+        padding: 8px 20px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .navbar .btn-appointment:hover {
+        background-color: #e68a1c;
+        transform: translateY(-2px);
+      }
+
+      /* ── BACK TO TOP ── */
+      .back-top {
+        position: fixed;
+        bottom: 96px;
+        right: 24px;
+        background: #0065b3;
+        color: #fff;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .3s;
+        z-index: 800;
+        border: none;
+        cursor: pointer;
+      }
+
+      .back-top.visible {
+        opacity: 1;
+        pointer-events: all;
+      }
+
       /* Additional styles specific to About page */
       .about-header {
         background-image: url("images/image.png"); /* Replace with your image path */
@@ -443,28 +538,51 @@
     </style>
   </head>
   <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+    <!-- Top Bar -->
+    <div class="top-bar d-none d-md-block">
       <div class="container">
-        <a class="navbar-brand" href="index.html">Contact Us</a>
+        <div class="row">
+          <div class="col-md-8">
+            <span class="me-3"
+              ><i class="fas fa-phone-alt"></i> Call Us: +254 721 600700</span
+            >
+            <span class="me-3"
+              ><i class="fas fa-envelope"></i> info@hamathealthcare.com </span
+            >
+          </div>
+          <div class="col-md-4 text-end">
+            <span
+              ><i class="fas fa-clock"></i> Opening Hours: Mon-Sun 24/7</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="images/Logo.PNG" alt="Hamat Healthcare Logo" />
+        </a>
         <button
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
-          data-bs-target="#navbarResponsive"
-          aria-controls="navbarResponsive"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <i class="fas fa-bars"></i>
+          <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               <a class="nav-link" href="index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about.html">About</a>
+              <a class="nav-link" href="about.html">About Us</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="services.html">Services</a>
@@ -473,14 +591,14 @@
               <a class="nav-link" href="news.html">News</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="contact.html">Contact</a>
-              
+              <a class="nav-link active" href="contact.html">Contacts</a>
             </li>
-            <li class="nav-item">
+             <li class="nav-item">
               <a class="nav-link" href="pharmacy.html">Pharmacy</a>
             </li>
-            <li class="nav-item"><a class="nav-link active" href="card.html">Hamat Card</a></li>
+            <li class="nav-item"><a class="nav-link" href="card.html">Hamat Card</a></li>
           </ul>
+          <a href="https://wa.me/254721600700?text=Hello%20Hamat%20Healthcare,%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" class="btn btn-appointment ms-3">Book Appointment</a>
         </div>
       </div>
     </nav>
@@ -525,7 +643,7 @@
                 <i class="fas fa-map-marker-alt me-2"></i> Membly, Ruiru Eastern By-Pass
               </p>
               <p>
-                <i class="fas fa-envelope me-2"></i> info@hamathealthcare.com
+                <a href="mailto:info@hamathealthcare.com"><i class="fas fa-envelope me-2"></i> info@hamathealthcare.com</a>
               </p>
               <p><i class="fas fa-phone-alt me-2"></i> +254 721 600700</p>
             </div>
@@ -711,7 +829,7 @@
               </p>
               <p>
                 <i class="fas fa-envelope"></i>
-                <span>info@hamathealthcare.com</span>
+                <span><a href="mailto:info@hamathealthcare.com">info@hamathealthcare.com</a></span>
               </p>
               <p>
                 <i class="fas fa-clock"></i>
@@ -765,6 +883,14 @@
         } else {
           alert("Please select at least one service.");
         }
+      });
+    </script>
+
+    <button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+    <script>
+      window.addEventListener('scroll', () => {
+        document.getElementById('backTop').classList.toggle('visible', window.scrollY > 400);
       });
     </script>
   </body>
